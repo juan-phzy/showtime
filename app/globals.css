@@ -3,40 +3,30 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 200 20% 98%;
-    --btn-background: 200 10% 91%;
-    --btn-background-hover: 200 10% 89%;
-    --foreground: 200 50% 3%;
-  }
+	:root {
+	}
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background: 200 50% 3%;
-      --btn-background: 200 10% 9%;
-      --btn-background-hover: 200 10% 12%;
-      --foreground: 200 20% 96%;
-    }
-  }
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+		position: relative;
+		box-sizing: border-box;
+		width: 100vw;
+		height: 100vh;
+		min-width: 400px;
+		min-height: 650px;
+		background-color: black;
+		color: white;
+	}
 }
 
-@layer base {
-  * {
-    @apply border-foreground/20;
-  }
-}
-
-.animate-in {
-  animation: animateIn 0.3s ease 0.15s both;
-}
-
-@keyframes animateIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@layer components {
+	.main-container,
+	.protected-main-layout {
+		@apply border-solid border-2 border-white
+    flex flex-col justify-center items-center
+    w-full h-full
+    relative;
+	}
 }
