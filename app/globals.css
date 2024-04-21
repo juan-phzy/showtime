@@ -2,31 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ROOT CSS */
 @layer base {
+
 	:root {
+		/* Empty */
 	}
 
-	html,
-	body {
-		margin: 0;
-		padding: 0;
-		position: relative;
-		box-sizing: border-box;
-		width: 100vw;
-		height: 100vh;
-		min-width: 400px;
-		min-height: 650px;
-		background-color: black;
-		color: white;
+	html,body {
+			margin: 0;
+			padding: 0;
+			position: relative;
+			box-sizing: border-box;
+			width: 100vw;
+			height: 100vh;
+			min-width: 400px;
+			min-height: 650px;
+			background-color: darkslategray;
+			color: white;
+		}
+}
+
+/* Root Layout */
+@layer components {
+	.main-container,
+	.protected-main-container {
+		@apply 
+		/* border-solid border-4 border-blue-400 */
+		flex flex-col justify-center items-center
+		w-full h-full
+		relative;
 	}
 }
 
+/* Welcome Page */
 @layer components {
-	.main-container,
-	.protected-main-layout {
-		@apply border-solid border-2 border-white
-    flex flex-col justify-center items-center
-    w-full h-full
-    relative;
+	.welcome-page-container {
+		@apply border-solid border-4 border-blue-400
+		flex justify-center items-center
+		w-full h-full
+		p-5 sm:p-10 md:p-14
+		relative;
+	}
+	.welcome-page-content {
+		@apply border-solid border-4 border-orange-400
+		flex flex-col justify-center items-center
+		w-full h-full max-w-[1000px]
+		gap-4
+		relative;
+	}
+	.welcome-header-container {
+		@apply border-solid border-4 border-purple-400
+		flex flex-col justify-center items-center
+		w-full h-fit
+		p-5 gap-4
+		relative;
+	}
+	.welcome-image-container {
+		@apply border-solid border-4 border-yellow-400
+		flex flex-col justify-center items-center
+		w-full h-[300px]
+		p-5 gap-4
+		relative;
+	}
+	.welcome-btns-container {
+		@apply border-solid border-4 border-red-400
+		flex flex-col justify-center items-center
+		w-full h-fit
+		gap-2
+		relative
+		
+		sm:flex-row sm:gap-4 sm:justify-between;
+	}
+	.welcome-btn {
+		@apply border-solid border-4 border-green-400
+		flex justify-center items-center
+		w-full h-fit
+		p-2 gap-4
+		relative
+		
+		sm:w-[250px] md:w-[300px] lg:w-[350px];
 	}
 }

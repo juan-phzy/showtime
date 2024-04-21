@@ -1,24 +1,24 @@
-import AuthButton from "../components/AuthButton";
-import { createClient } from "@/utils/supabase/server";
+import Link from "next/link";
 
-export default async function Index() {
-	const canInitSupabaseClient = () => {
-		try {
-			createClient();
-			return true;
-		} catch (e) {
-			return false;
-		}
-	};
-
-	const isSupabaseConnected = canInitSupabaseClient();
+export default function Index() {
 
 	return (
-		<section>
-			<div>
-				<AuthButton />
+		<section className="welcome-page-container">
+			
+			<div className="welcome-page-content">
+				<div className="welcome-header-container">Header</div>
+				<div className="welcome-image-container">Image</div>
+				<div className="welcome-btns-container">
+					<div className="welcome-btn">
+						<Link href="/sign-in">Sign In</Link>
+					</div>
+					<div className="welcome-btn">
+						<Link href="/sign-up">Sign Up</Link>
+					</div>
+				</div>
 			</div>
-			<div>This is the main page</div>
+			
+			
 		</section>
 	);
 }
