@@ -84,3 +84,41 @@
 		sm:w-[250px] md:w-[300px] lg:w-[350px];
 	}
 }
+
+/* Complete Sign Up */
+@layer components {
+	.complete-signup-container {
+		@apply border-solid border-4 border-blue-400
+		flex justify-center items-center
+		w-full h-full
+		p-5 sm:p-10 md:p-14
+		relative;
+	}
+	.complete-signup-content {
+		@apply border-solid border-4 border-orange-400
+		flex flex-col justify-center items-center
+		w-full h-full max-w-[1000px]
+		gap-4
+		relative;
+	}
+	
+	.complete-signup-form-container {
+		@apply border-solid border-4 border-yellow-400
+		flex-1 flex flex-col justify-center items-center
+		w-full h-fit 
+		px-8 
+		gap-2
+		sm:max-w-md;
+	}
+	
+}
+
+/* Forms */
+@layer components {
+	.form-1 {
+		@apply border-solid border-4 border-blue-400
+		flex flex-col justify-center items-center
+		w-full  
+		gap-2
+	}
+}

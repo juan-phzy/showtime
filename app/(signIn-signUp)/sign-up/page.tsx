@@ -2,9 +2,8 @@ import Link from "next/link";
 import { headers } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import { SubmitButton } from "../submit-button";
-
-export default function Login({searchParams}: Readonly<{searchParams: { message: string };}>) 
+import { SubmitButton } from "@/components/buttons/SubmitButton";
+export default function Login({searchParams}: Readonly<{searchParams: { message: string }}>) 
 {
   
 
