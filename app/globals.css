@@ -18,7 +18,7 @@
 			height: 100vh;
 			min-width: 400px;
 			min-height: 650px;
-			background-color: darkslategray;
+			background-color: rgb(15, 0, 0);
 			color: white;
 		}
 }
@@ -45,28 +45,36 @@
 		relative;
 	}
 	.welcome-page-content {
-		@apply border-solid border-4 border-orange-400
+		@apply border-dotted border-2 border-orange-400
 		flex flex-col justify-center items-center
 		w-full h-full max-w-[1000px]
 		gap-4
 		relative;
 	}
 	.welcome-header-container {
-		@apply border-solid border-4 border-purple-400
+		@apply border-dotted border-2 border-purple-400
 		flex flex-col justify-center items-center
-		w-full h-fit
+		w-full h-[70px]
 		p-5 gap-4
 		relative;
+	}
+	.welcome-page-body {
+		@apply flex flex-col justify-center items-center 
+		w-full h-fit
+		gap-2
 	}
 	.welcome-image-container {
-		@apply border-solid border-4 border-yellow-400
+		@apply border-dotted border-2 border-yellow-400
 		flex flex-col justify-center items-center
-		w-full h-[300px]
+		w-full h-[300px] max-w-[600px]
 		p-5 gap-4
 		relative;
 	}
+	.welcome-text {
+		@apply text-2xl
+	}
 	.welcome-btns-container {
-		@apply border-solid border-4 border-red-400
+		@apply border-dotted border-2 border-red-400
 		flex flex-col justify-center items-center
 		w-full h-fit
 		gap-2
@@ -75,10 +83,10 @@
 		sm:flex-row sm:gap-4 sm:justify-between;
 	}
 	.welcome-btn {
-		@apply border-solid border-4 border-green-400
+		@apply border-dotted border-2 border-green-400
 		flex justify-center items-center
 		w-full h-fit
-		p-2 gap-4
+		gap-4
 		relative
 		
 		sm:w-[250px] md:w-[300px] lg:w-[350px];
@@ -121,4 +129,20 @@
 		w-full  
 		gap-2
 	}
+}
+
+
+/* Buttons */
+@layer components {
+	.rounded-btn {
+		@apply flex justify-center items-center
+		w-full h-fit
+		rounded-2xl
+		bg-[#F47A62]
+		text-black
+		font-medium
+		p-2
+		transition duration-300 ease-in-out
+		hover:bg-[#fcab9a]
+	}	
 }
