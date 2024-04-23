@@ -19,7 +19,7 @@ async function getTheaters() {
 	return res.json()
 }
 
-export default function SignUpStep2({ uid, searchParams }: SignUpFormProps){
+export default function SignUpStep2({ uid, searchParams }: Readonly<SignUpFormProps>){
 	const [selectedTheater, setSelectedTheater] = useState<string | null>(null);
 	const [cinemas1, setCinemas1] = useState<CinemaData[]>([]);
 	const [cinemas2, setCinemas2] = useState<CinemaData[]>([]);

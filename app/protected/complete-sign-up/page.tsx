@@ -6,6 +6,7 @@ import SignUpStep1 from "@/components/forms/SignUpStep1";
 import SignUpStep2 from "@/components/forms/SignUpStep2";
 
 import { getHeaderText } from "@/utils/utilityFuncs";
+import SignUpStep3 from "@/components/forms/SignUpStep3";
 
 export default async function CompleteSignUpPage ({searchParams}: Readonly<{searchParams: SignUpSearchParams}>) {
 
@@ -52,7 +53,7 @@ export default async function CompleteSignUpPage ({searchParams}: Readonly<{sear
         <div className="complete-signup-form-container">
           {searchParams.step === "1" && (<SignUpStep1 formSubmit={submitUserInfo} searchParams={searchParams} />)}
           {searchParams.step === "2" && (<SignUpStep2 uid={user.id} searchParams={searchParams} />)}
-          {searchParams.step === "3" && (<div>Step 3</div>)}
+          {searchParams.step === "3" && (<SignUpStep3 />)}
         </div>
       </div>
     </section>
