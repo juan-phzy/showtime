@@ -15,7 +15,7 @@ export default async function ProtectedLayout({children}: Readonly<{children: Re
 	} = await supabase.auth.getUser();
 
 	if (!user) {
-		return redirect("/login");
+		return redirect("/");
 	}
 
 	return <main className="protected-main-container">{children}</main>;

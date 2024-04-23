@@ -1,12 +1,12 @@
 import React from 'react';
 import { SubmitButton } from '../buttons/SubmitButton';
 
-import { SearchParams, FormSubmitFunction } from "@/utils/constants";
+import { SignUpSearchParams, FormSubmitFunction } from "@/utils/constants";
 
 
 interface SignUpFormProps {
     formSubmit: FormSubmitFunction;
-    searchParams: SearchParams;
+    searchParams: SignUpSearchParams;
   }
 
 const SignUpStep1: React.FC<SignUpFormProps> = ({ formSubmit, searchParams }) => {
@@ -16,7 +16,7 @@ const SignUpStep1: React.FC<SignUpFormProps> = ({ formSubmit, searchParams }) =>
         Username
       </label>
       <input
-        className="rounded-md px-4 py-2 bg-inherit border mb-6"
+        className="rounded-md px-4 py-2 bg-inherit border"
         name="username"
         placeholder="JohnDoe12345"
         required
@@ -25,7 +25,7 @@ const SignUpStep1: React.FC<SignUpFormProps> = ({ formSubmit, searchParams }) =>
         Phone Number
       </label>
       <input
-        className="rounded-md px-4 py-2 bg-inherit border mb-6"
+        className="rounded-md px-4 py-2 bg-inherit border"
         type="text"
         name="phone"
         placeholder="1234445566"
@@ -35,7 +35,7 @@ const SignUpStep1: React.FC<SignUpFormProps> = ({ formSubmit, searchParams }) =>
         Showtime Preference
       </label>
       <select 
-        className="rounded-md px-4 py-2 bg-inherit border mb-6"
+        className="rounded-md px-4 py-2 bg-inherit border"
         name="showtime"
         required>
         <option value="morning">Morning</option>
@@ -45,17 +45,23 @@ const SignUpStep1: React.FC<SignUpFormProps> = ({ formSubmit, searchParams }) =>
       
       <SubmitButton
         formAction={formSubmit}
-        className="border border-foreground/20 rounded-md px-4 py-2 text-foreground mb-2"
+        className="border border-foreground/20 rounded-md px-4 py-2 text-foreground"
         pendingText="Signing Up..."
       >
         Continue
       </SubmitButton>
-      {searchParams?.message && (
-        <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
-          {searchParams.message}
-          {searchParams.joe}
-        </p>
-      )}
+      <div className="flex justify-center items-center w-fit h-fit p-1 text-sm">
+					{searchParams?.error && (
+					<p className="p-4 bg-red-500 text-white text-center">
+						Error:
+					</p>
+					)}
+					{searchParams?.message && (
+						<p className="p-4 text-center bg-gray-700">
+							{searchParams.message}
+						</p>
+					)}
+				</div>
     </form>
   );
 }

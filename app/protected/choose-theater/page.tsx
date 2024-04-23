@@ -1,6 +1,7 @@
 "use client"
 
-import { useEffect, useState } from 'react';    
+import { useEffect, useState } from 'react';  
+import { CinemaChoiceData } from '@/utils/constants';  
 
 async function getData() {
     const res = await fetch('/api/movietheaters') // Adjust the endpoint as necessary
@@ -11,17 +12,31 @@ async function getData() {
 }
 
 export default function ChooseTheater() {
-  const [data, setData] = useState(null);
+  const [theatersList, setTheatersList] = useState<CinemaChoiceData | null>(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    getData().then(setData).catch(setError);
+    /*
+      The reason for data.data is because the response from the API
+      returns an object with the following structure:
+      {data: {
+          data: {
+            cinemas: [],
+            status: {}
+          }
+        }
+      }
+    */
+    getData().then(data => setTheatersList(data.data)).catch(setError);
   }, []);
 
   if (error) return <div>Error loading data</div>;
-  if (!data) return <div>Loading...</div>;
+  if (!theatersList) return <div>Loading...</div>;
+
+  console.log(theatersList);
+  console.log(theatersList.cinemas);
 
   return (
-    <div>{JSON.stringify(data)}</div>
+    <div className='text-wrap'>{JSON.stringify(theatersList)}</div>
   )
 }

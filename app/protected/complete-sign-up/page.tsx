@@ -1,21 +1,22 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import { SubmitButton } from "@/components/buttons/SubmitButton";
 
-import { SearchParams, FormSubmitFunction } from "@/utils/constants";
+import { SignUpSearchParams, FormSubmitFunction } from "@/utils/constants";
 import SignUpStep1 from "@/components/forms/SignUpStep1";
+import SignUpStep2 from "@/components/forms/SignUpStep2";
 
-export default async function CompleteSignUpPage ({searchParams}: Readonly<{searchParams: SearchParams}>) {
+import { getHeaderText } from "@/utils/utilityFuncs";
 
+export default async function CompleteSignUpPage ({searchParams}: Readonly<{searchParams: SignUpSearchParams}>) {
+
+  //--------------------------------------------------------------------------------Check if user is logged in
   const supabase = createClient();
-
 	const {data: { user }} = await supabase.auth.getUser();
-
 	if (!user) {
 		return redirect("/");
 	}
 
-  const formSubmit: FormSubmitFunction = async (formData: FormData) => {
+  const submitUserInfo: FormSubmitFunction = async (formData: FormData) => {
     "use server";
 
     const username = formData.get("username") as string;
@@ -32,19 +33,26 @@ export default async function CompleteSignUpPage ({searchParams}: Readonly<{sear
         { auth_id:userId, user_name: username, phone_number: phone, showtime_preference: showtime },
       ])
       .select();
+    
     if (error) {
-      return redirect(`/protected/complete-sign-up?message=Error:   ${error.message}`);
+      return redirect(`/protected/complete-sign-up?step=1&error=true&message=${error.message}`);
     }
 
-    console.log(data)
-    return redirect("/protected/complete-sign-up?message=SupaBase Success&joe=1234");
+    console.log("\n\nUser data inserted successfully\n\n");
+    console.log("Data:\n\n",data,"\n\n");
+    return redirect("/protected/complete-sign-up?step=2");
   };
+
+  const headerText = getHeaderText(searchParams.step); 
 
   return (
     <section className="complete-signup-container">
       <div className="complete-signup-content">
+        <div className="complete-signup-header">{headerText}</div>
         <div className="complete-signup-form-container">
-          <SignUpStep1 formSubmit={formSubmit} searchParams={searchParams} /> 
+          {searchParams.step === "1" && (<SignUpStep1 formSubmit={submitUserInfo} searchParams={searchParams} />)}
+          {searchParams.step === "2" && (<SignUpStep2 uid={user.id} searchParams={searchParams} />)}
+          {searchParams.step === "3" && (<div>Step 3</div>)}
         </div>
       </div>
     </section>

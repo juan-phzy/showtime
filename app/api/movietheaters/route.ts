@@ -1,19 +1,24 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-
-
 export async function GET() {
-    const res = await fetch('https://api-gate2.movieglu.com/cinemasNearby/?n=5', {
-      headers: {
-        "client":"NYIT",
-        "x-api-key":"1DwsUCc08p2EAhMgwm7Ff8RxwAry7UwCAjcalKTj",
-        "authorization":"Basic TllJVF9YWDpFNE1WcHk2MHdjZEE=",
-        "territory":"XX",
-        "api-version":"v200",
-        "geolocation":"-22.0;14.0",
-        "device-datetime": new Date().toISOString(),
-      },
-    });
-    const data = await res.json();
- 
-    return Response.json({ data });
-  }
+
+  const API_URL = process.env.MOVIEGULU_API_ENDPOINT;
+  const CLIENT = process.env.MOVIEGULU_CLIENT;
+  const API_KEY = process.env.MOVIEGULU_API_KEY;
+  const AUTH = process.env.MOVIEGULU_AUTHORIZATION;
+  const TERRITORY = process.env.MOVIEGULU_TERRITORY;
+  const API_VERSION = process.env.MOVIEGULU_API_VERSION;
+  const GEOLOC = process.env.MOVIEGULU_GEOLOCATION;
+
+  const res = await fetch(`${API_URL}/cinemasNearby/?n=6`, {
+    headers: {
+      "client":CLIENT ? CLIENT : "",
+      "x-api-key":API_KEY ? API_KEY : "",
+      "authorization":AUTH ? AUTH : "",
+      "territory":TERRITORY ? TERRITORY : "",
+      "api-version":API_VERSION ? API_VERSION : "",
+      "geolocation":GEOLOC ? GEOLOC : "",
+      "device-datetime": new Date().toISOString(),
+    },
+  });
+  const data = await res.json();
+  return Response.json({ data });
+}
