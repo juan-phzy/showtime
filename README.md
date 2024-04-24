@@ -18,3 +18,5 @@
 * Database------------------ Supabase
 * Showtime API------------- MovieGlu
 * Movie Data API----------- TMDB
+
+This is a sample text
