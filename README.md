@@ -9,7 +9,7 @@
 * Cheuk Tung Ho
 
 ## Check out our live deployment:
-[Click here to view our application.](showtime-eight.vercel.app)
+[Click here to view our application.](https://showtime-eight.vercel.app/)
 
 ## Technologies Used
 * Web Development-------- Next.JS / React / Node
