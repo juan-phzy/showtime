@@ -23,7 +23,6 @@ export default function SignUpStep2({ uid, searchParams }: Readonly<SignUpFormPr
 	const [selectedTheater, setSelectedTheater] = useState<string | null>(null);
 	const [cinemas1, setCinemas1] = useState<CinemaData[]>([]);
 	const [cinemas2, setCinemas2] = useState<CinemaData[]>([]);
-	const [error, setError] = useState(null);
 	const router = useRouter();
 
 	useEffect(() => {
@@ -32,7 +31,7 @@ export default function SignUpStep2({ uid, searchParams }: Readonly<SignUpFormPr
 				setCinemas1(data.data.cinemas.slice(0, 3));
 				setCinemas2(data.data.cinemas.slice(3, 6));
 			})
-			.catch(setError);
+			.catch((error: any) => {console.log(error)});
 		// ADD ERROR HANDLING LATER
 	}, []);
 

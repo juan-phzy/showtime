@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { GENRES } from "@/utils/constants";
+import PreferenceCard from "../cards/PreferenceCard";
 
 //------------------------------------------------------------Function to fetch data from the API
 async function getChoiceLists() {
@@ -61,20 +62,39 @@ export default function SignUpStep3() {
 	}
 
   return (
-    <section className="flex flex-col justify-center items-center w-fit h-fit">
-			<div>Step 3</div>
-			<div className="flex justify-center items-center flex-wrap w-fit h-fit">
-				Directors: {directors.map((director)=>{return (<div key={director} className="mx-2">| {director} |</div>)})}
-			</div>
-			<div className="flex justify-center items-center flex-wrap w-fit h-[100px] overflow-scroll">
-				Actors: {actors.map((actor)=>{return (<div key={actor} className="mx-2">| {actor} |</div>)})}
-			</div>
-			<div className="flex justify-center items-center flex-wrap w-fit h-[100px] overflow-scroll">
-				Genres: {genres.map((genre)=>{return (<div key={genre} className="mx-2">| {genre} |</div>)})}
-			</div>
-			<div className="flex justify-center items-center flex-wrap w-fit h-fit">
-				Companies: {distributors.map((dis)=>{return (<div key={dis} className="mx-2">| {dis} |</div>)})}
-			</div>
-		</section>
+    <section className="signup-step3">
+		<div className="signup-step3-title">Directors:</div>
+		<div className="signup-step3-cards-container">
+			{directors.map((director)=>{
+				return (
+					<PreferenceCard isName={true} text={director} selected={false} />
+				)
+			})}
+		</div>
+		<div className="signup-step3-title">Actors:</div>
+		<div className="signup-step3-cards-container">
+			{actors.map((actor)=>{
+				return (
+					<PreferenceCard isName={true} text={actor} selected={false} />
+				)
+			})}
+		</div>
+		<div className="signup-step3-title">Genres:</div>
+		<div className="signup-step3-cards-container">
+			{genres.map((genre)=>{
+				return (
+					<PreferenceCard isName={false} text={genre} selected={false} />
+				)
+			})}
+		</div>
+		<div className="signup-step3-title">Companies:</div>
+		<div className="signup-step3-cards-container">
+			{distributors.map((distributor)=>{
+				return (
+					<PreferenceCard isName={false} text={distributor} selected={false} />
+				)
+			})}
+		</div>
+	</section>
   )
 }

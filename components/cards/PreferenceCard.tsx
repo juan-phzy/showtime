@@ -1,19 +1,19 @@
 interface PreferenceCardProps {
+    isName: boolean;
+    text: string;
     selected: boolean;
-    title: string;
-    distance: string;
-    address: string;
-    city: string;
-    state: string;
   }
   
-  const PreferenceCard = ({title,distance,address,city,state,selected}:PreferenceCardProps) => {
-    const formattedDistance = (parseFloat(distance).toFixed(1)).toString();
+  const PreferenceCard = ({isName, text, selected}:PreferenceCardProps) => {
+
+    const fullNameArray = isName ? text.split(" ") : null;
+    const firstName = fullNameArray ? fullNameArray.shift() : null;
+    const lastNames = fullNameArray ? fullNameArray.join(" ") : null;
+
     return (
-      <section className={`cinema-card ${selected && 'selected'}`}>
-          <div className='w-full h-fit flex justify-start items-center text-lg'>{title}</div>
-          <div className='w-full h-fit flex justify-start items-center text-xs'>
-            {formattedDistance} mi away | {`${address}, ${city}, ${state}`}
+      <section className={`preference-card ${selected && 'selected'}`}>
+          <div className='w-full h-fit flex flex-col justify-center items-start text-xs border-solid border-white border-[1px]'>
+            {!isName ? text : <><span>{firstName}</span><span>{lastNames}</span></>}
           </div>
       </section>
     )

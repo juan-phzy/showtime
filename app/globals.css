@@ -118,10 +118,10 @@
 		relative;
 	}
 	.complete-signup-form-container {
-		@apply border-solid border-4 border-yellow-400
+		@apply border-dotted border-2 border-yellow-400
 		flex flex-col justify-center items-center
 		w-full h-fit
-		px-2
+		relative
 		gap-2;
 	}
 	
@@ -173,6 +173,30 @@
 	}
 }
 
+/* SignUpStep3 */ 
+@layer components {
+	.signup-step3 {
+		@apply 
+		/* border-4 border-dotted border-red-600 */
+		flex flex-col justify-center items-center 
+		relative
+		w-full h-fit;
+	}
+	.signup-step3-title {
+		@apply 
+		/* border-2 border-solid border-white */
+		flex justify-start items-center
+		w-full h-fit
+		py-2;
+	}
+	.signup-step3-cards-container {
+		@apply flex flex-nowrap justify-start items-center 
+		w-full h-fit
+		gap-2
+		overflow-x-auto;
+	}
+}
+
 /* Buttons */
 @layer components {
 	.rounded-btn {
@@ -205,5 +229,15 @@
 	.selected {
 		@apply border-solid border-2 border-[#F47A62]
 		bg-[#af8076]
-	}	
+	}
+	.preference-card {
+		@apply flex flex-col justify-center items-center
+		bg-gray-700 text-white
+		w-[130px] h-[60px]
+		shrink-0
+		rounded-lg
+		relative
+		gap-1
+		px-2;
+	}
 }
