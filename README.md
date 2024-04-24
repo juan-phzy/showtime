@@ -6,7 +6,7 @@
 * Tanat Sahta
 * Emri Nesimi
 * Elijah Ewers
-* Cheuk Tung Ho
+* Cheuk Tung Ho nate 
 
 ## Check out our live deployment:
 [Click here to view our application.](https://showtime-eight.vercel.app/)
