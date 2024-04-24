@@ -9,4 +9,8 @@ export function getHeaderText(step: string): string{
       default:
         return "Complete Sign Up";
     } 
-  }
+}
+
+export function removeDuplicatesUsingFilter(array: string[]) {
+	return array.filter((item, index) => array.indexOf(item) === index);
+}

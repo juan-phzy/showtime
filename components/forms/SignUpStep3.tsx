@@ -1,9 +1,10 @@
 "use client"
-
+//------------------------------------------------------------Importing Required Libraries
 import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
+import { GENRES } from "@/utils/constants";
 
-
+//------------------------------------------------------------Function to fetch data from the API
 async function getChoiceLists() {
 	const res = await fetch('/api/choiceslist') // Adjust the endpoint as necessary
 	if (!res.ok) {
@@ -12,12 +13,21 @@ async function getChoiceLists() {
 	return res.json()
 }
 
-const SignUpStep3 = () => {
+
+
+//------------------------------------------------------------Component Starts Here
+export default function SignUpStep3() {
+	const [actors, setActors] = useState<string[]>([]);
+	const [directors, setDirectors] = useState<string[]>([]);
+	const [distributors, setDistributors] = useState<string[]>([]);
+	const genres = GENRES.map(genre => genre.name);
 
 	useEffect(() => {
 			getChoiceLists()
 					.then((data) => {
-							console.log(data)
+							setActors(data.lists.actors);
+							setDirectors(data.lists.directors);
+							setDistributors(data.lists.distributors);
 					})
 					.catch((error) => {console.log(error)});
 			// ADD ERROR HANDLING LATER
@@ -51,8 +61,20 @@ const SignUpStep3 = () => {
 	}
 
   return (
-    <div>SignUpStep3</div>
+    <section className="flex flex-col justify-center items-center w-fit h-fit">
+			<div>Step 3</div>
+			<div className="flex justify-center items-center flex-wrap w-fit h-fit">
+				Directors: {directors.map((director)=>{return (<div key={director} className="mx-2">| {director} |</div>)})}
+			</div>
+			<div className="flex justify-center items-center flex-wrap w-fit h-[100px] overflow-scroll">
+				Actors: {actors.map((actor)=>{return (<div key={actor} className="mx-2">| {actor} |</div>)})}
+			</div>
+			<div className="flex justify-center items-center flex-wrap w-fit h-[100px] overflow-scroll">
+				Genres: {genres.map((genre)=>{return (<div key={genre} className="mx-2">| {genre} |</div>)})}
+			</div>
+			<div className="flex justify-center items-center flex-wrap w-fit h-fit">
+				Companies: {distributors.map((dis)=>{return (<div key={dis} className="mx-2">| {dis} |</div>)})}
+			</div>
+		</section>
   )
 }
-
-export default SignUpStep3

@@ -1,4 +1,3 @@
-
 interface CinemaCardProps {
   selected: boolean;
   title: string;
