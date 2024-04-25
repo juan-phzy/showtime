@@ -75,7 +75,8 @@ export default async function MoviesPage() {
         const res2 = await getMoviesComingUp();
 	      const { data: { films:moviesComingUp } } : { data: { films:MovieGluFilm[]}} = await res2.json();
         setMoviesComingSoon(moviesComingUp);
-      } catch (error) {
+      }
+      catch (error) {
         console.error("Error fetching movies:", error);
       }
     }
