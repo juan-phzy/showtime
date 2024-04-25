@@ -1,5 +1,10 @@
+"use client"
+
 import { MovieGluFilm } from "@/utils/constants";
-import {useState} from "react"
+import {useEffect, useState} from "react"
+import MovieCard from "../../../components/cards/MovieCard"
+
+
 
 
 //vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  DO NOT MODIFY  vvvvvvvvvv
@@ -10,8 +15,9 @@ const AUTH = process.env.MOVIEGULU_AUTHORIZATION;
 const TERRITORY = process.env.MOVIEGULU_TERRITORY;
 const API_VERSION = process.env.MOVIEGULU_API_VERSION;
 const GEOLOC = process.env.MOVIEGULU_GEOLOCATION;
+
 async function getMoviesNowShowing() {
-  const res = await fetch(`${API_URL}/filmsNowShowing/?n=5`, {
+  const res = await fetch(`${API_URL}/filmsNowShowing/?n=1`, {
 		method: "GET",
     headers: {
       "client":CLIENT ? CLIENT : "",
@@ -27,7 +33,7 @@ async function getMoviesNowShowing() {
   return Response.json({data});
 }
 async function getMoviesComingUp() {
-  const res = await fetch(`${API_URL}/filmsComingSoon/?n=5`, {
+  const res = await fetch(`${API_URL}/filmsComingSoon/?n=1`, {
 		method: "GET",
     headers: {
       "client":CLIENT ? CLIENT : "",
@@ -49,18 +55,33 @@ async function getMoviesComingUp() {
 export default async function MoviesPage() {
 
 	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  DO NOT MODIFY  vvvvvvvvvv
-	const res1 = await getMoviesNowShowing();
-	const { data: { films:moviesNowShowing } } : { data: { films:MovieGluFilm[]}} = await res1.json();
+	
 
-	const res2 = await getMoviesComingUp();
-	const { data: { films:moviesComingUp } } : { data: { films:MovieGluFilm[]}} = await res2.json();
+	
 	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  DO NOT MODIFY  ^^^^^^^^^^^^
 	
 
   const [nowPlaying,setNowPlaying] = useState<boolean>(true)
+  const [moviesPlaying,setMoviesPlaying] = useState<MovieGluFilm[]>([])
+  const [moviesComingSoon,setMoviesComingSoon] = useState<MovieGluFilm[]>([])
 
-  const moviesPlaying = ["Avengers:Endgame", "Now Playing","Now Playing","Now Playing","Now Playing","Now Playing"]
-  const moviesComingSoon = ["Coming Soon","Coming Soon", "Coming Soon"]
+  useEffect(() => {
+    async function fetchData() {
+      try { 
+        const res1 = await getMoviesNowShowing();
+	      const { data: { films:moviesNowShowing } } : { data: { films:MovieGluFilm[]}} = await res1.json();
+        setMoviesPlaying(moviesNowShowing);
+        
+        const res2 = await getMoviesComingUp();
+	      const { data: { films:moviesComingUp } } : { data: { films:MovieGluFilm[]}} = await res2.json();
+        setMoviesComingSoon(moviesComingUp);
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      }
+    }
+    fetchData();
+  }, []);
+
 
   return (
     <section className = "movies-page-container">
@@ -78,11 +99,18 @@ export default async function MoviesPage() {
           </button>
         </div>
         <div className = "movie-card w-full flex flex-wrap"> 
-        { (nowPlaying? moviesPlaying: moviesComingSoon).map(
-          
-          (movie, index) => { return ( <button key={index} className="border-solid border-white border-2 w-1/2 hover:bg-white/60">{movie}</button> ) }  
-          
-          )}      
+            { (nowPlaying? moviesPlaying: moviesComingSoon).map(
+              
+              (movie:MovieGluFilm, index) => { return ( 
+              <button key={index} className="border-solid border-white border-2 w-1/2 hover:bg-white/60"><MovieCard
+              image = {movie.images.poster['1'].medium.film_image}
+              name = {movie.film_name}
+              rating = {""}
+              watchtime = {""}
+              genre = {""}/>
+              </button> ) }  
+              
+            )}      
 
         </div>
       </div>
@@ -91,3 +119,35 @@ export default async function MoviesPage() {
   )
 }
 
+/*
+export interface MovieGluFilm {
+  film_id: number;
+  imdb_id: number;
+  imdb_title_id: string;
+  film_name: string;
+  other_titles: string | null;
+  release_dates: ReleaseDate[];
+  age_rating: AgeRating[];
+  film_trailer: string;
+  synopsis_long: string;
+  images: Images;
+}
+
+export interface Images {
+  poster: { [key: string]: ImageDetails };
+  still: { [key: string]: ImageDetails };
+}
+
+export interface ImageDetails {
+  image_orientation: string;
+  region: string;
+  medium: ImageSize;
+}
+
+export interface ImageSize {
+  film_image: string;
+  width: number;
+  height: number;
+}
+
+*/
