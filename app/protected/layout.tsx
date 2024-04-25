@@ -15,13 +15,6 @@ export default async function ProtectedLayout({children}: Readonly<{children: Re
 	const {data: { user }} = await supabase.auth.getUser();
 	if (!user) { return redirect("/");}
 
-	let { data: generalUsers, error } = await supabase
-  .from('generalUsers')
-  .select("user_name");
-	const username = generalUsers ? generalUsers[0].user_name : "User";
-	if (error) { console.log(error) }
-
-
 	return (
 	<main className="protected-main-container">
 		<div className="protected-content-container">

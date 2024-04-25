@@ -45,7 +45,7 @@ async function getMoviesComingUp() {
 
 
 
-export default async function MoviesPage() {
+export default async function HomePage() {
 
 	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  DO NOT MODIFY  vvvvvvvvvv
 	const res1 = await getMoviesNowShowing();
@@ -56,22 +56,22 @@ export default async function MoviesPage() {
 	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  DO NOT MODIFY  ^^^^^^^^^^^^
 	
 	return (
-		<section className="movies-page-container">
+		<section className="home-page-container">
 			{/**
 			 * 
 			 * The two data sets you need are: moviesNowShowing and moviesComingUp
-       * 
+			 * 
 			 * They are arrays of MovieGluFilm objects and they are already set up in this file
 			 * You can view the MovieGluFilm interface in the utils/constants.ts file
 			 * There is also an example of a MovieGluFilm object in the utils/constants.ts file
-       * 
+			 * 
 			 * All of your "HTML" goes within this home-page-container section
-       * The class name movies-page-container is already set up for you in the globals.css file
+			 * The class name home-page-container is already set up for you in the globals.css file
 			 * Add the rest of your classes under it
 			 * 
 			 */}
 
-			<div>This is the movies Page</div>
+			<div>This is the Home Page</div>
 		</section>
 	);
 }

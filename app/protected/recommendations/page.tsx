@@ -1,8 +1,7 @@
-import React from 'react'
 
 const RecommendationsPage = () => {
   return (
-    <div>RecommendationsPage</div>
+    <div>This is the RecommendationsPage, do not touch</div>
   )
 }
 

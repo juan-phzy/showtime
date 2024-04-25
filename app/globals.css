@@ -38,7 +38,7 @@
 	}	
 	.protected-content-container {
 		@apply 
-		border-solid border-4 border-orange-400
+		/* border-solid border-4 border-orange-400 */
 		flex flex-col justify-center items-center
 		w-full h-full
 		relative;
@@ -285,4 +285,37 @@
 		relative;
 	}
 	
+}
+
+/* Home Page */ 
+@layer components {
+	.home-page-container {
+		@apply 
+		border-solid border-4 border-blue-400
+		flex flex-col justify-center items-center
+		w-full h-full
+		relative;
+	}	
+}
+
+/* Movies Page */ 
+@layer components {
+	.movies-page-container {
+		@apply 
+		border-solid border-4 border-blue-400
+		flex flex-col justify-center items-center
+		w-full h-full
+		relative;
+	}	
+}
+
+/* Profile Page */ 
+@layer components {
+	.profile-page-container {
+		@apply 
+		border-solid border-4 border-blue-400
+		flex flex-col justify-center items-center
+		w-full h-full
+		relative;
+	}	
 }
