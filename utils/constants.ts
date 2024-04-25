@@ -1,3 +1,7 @@
+import { FaUserAlt, FaBell, FaFilm, FaHome  } from "react-icons/fa";
+
+
+
 export type FormSubmitFunction = (formData: FormData) => Promise<void>;
 
 export interface SignUpSearchParams {
@@ -114,3 +118,26 @@ export const GENRES = [
     "name": "Western"
   }
 ];
+
+export const NAVLINKS = [
+  {
+    href: "/protected",
+    label: "Home",
+    icon: FaHome,
+  },
+  {
+    href: "/protected/recommendations",
+    label: "Recs",
+    icon: FaBell,
+  },
+  {
+    href: "/protected/movies",
+    label: "Movies",
+    icon: FaFilm,
+  },
+  {
+    href: "/protected/profile",
+    label: "Profile",
+    icon: FaUserAlt,
+  }
+]

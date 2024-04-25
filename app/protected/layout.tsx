@@ -1,5 +1,8 @@
+import NavBar from "@/components/NavBar";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
+
+
 
 export const metadata = {
 	title: "Showtime",
@@ -9,14 +12,24 @@ export const metadata = {
 export default async function ProtectedLayout({children}: Readonly<{children: React.ReactNode}>) {
 
 	const supabase = createClient();
+	const {data: { user }} = await supabase.auth.getUser();
+	if (!user) { return redirect("/");}
 
-	const {
-		data: { user },
-	} = await supabase.auth.getUser();
+	let { data: generalUsers, error } = await supabase
+  .from('generalUsers')
+  .select("user_name");
+	const username = generalUsers ? generalUsers[0].user_name : "User";
+	if (error) { console.log(error) }
 
-	if (!user) {
-		return redirect("/");
-	}
 
-	return <main className="protected-main-container">{children}</main>;
+	return (
+	<main className="protected-main-container">
+		<div className="protected-content-container">
+			{children}
+		</div>
+		<div className="navbar-container">
+			<NavBar />
+		</div>
+	</main>
+	);
 }

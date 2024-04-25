@@ -23,12 +23,22 @@
 		}
 }
 
-/* Root Layout */
+/* Root Layout & Protected Layout */
 @layer components {
 	.main-container,
 	.protected-main-container {
 		@apply 
 		/* border-solid border-4 border-blue-400 */
+		flex flex-col justify-center items-center
+		w-full h-full
+		relative;
+	}
+	.protected-main-container {
+		@apply md:flex-col-reverse
+	}	
+	.protected-content-container {
+		@apply 
+		border-solid border-4 border-orange-400
 		flex flex-col justify-center items-center
 		w-full h-full
 		relative;
@@ -137,7 +147,6 @@
 	}
 }
 
-
 /* SignUpStep2 */
 @layer components {
 	.signup-step2 {
@@ -228,10 +237,6 @@
 		gap-1
 		p-2;
 	}
-	.selected {
-		@apply border-solid border-2 border-[#F47A62]
-		bg-[#af8076]
-	}
 	.preference-card {
 		@apply flex flex-col justify-center items-center
 		bg-gray-700 text-white
@@ -242,4 +247,42 @@
 		gap-1
 		px-2;
 	}
+	.selected {
+		@apply border-solid border-2 border-[#F47A62]
+		bg-[#af8076]
+	}
+}
+
+/* NavBar */
+@layer components {
+	.navbar-container {
+		@apply 
+		/* border-solid border-4 border-blue-400 */
+		flex justify-center items-center md:justify-between
+		w-full h-[90px]
+		relative
+		p-2;
+	}
+	.mobile-links-container {
+		@apply 
+		/* border-solid border-2 border-orange-400 */
+		flex justify-evenly items-center
+		w-full h-full md:max-w-[400px]
+		relative;
+	}
+	.navbar-mobile-link {
+		@apply 
+		/* border-solid border-white border-[1px] */
+		flex flex-col justify-evenly items-center 
+		w-full h-full 
+		relative;
+	}
+	.navbar-logo {
+		@apply 
+		/* border-solid border-2 border-yellow-400 */
+		hidden md:flex md:flex-row md:justify-center md:items-center
+		w-[250px] h-full
+		relative;
+	}
+	
 }

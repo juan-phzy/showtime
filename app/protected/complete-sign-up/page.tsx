@@ -27,10 +27,11 @@ export default async function CompleteSignUpPage ({searchParams}: Readonly<{sear
     const supabase = createClient();
     const {data: { user }} = await supabase.auth.getUser();
     const userId = user?.id;
- 
+    console.log("\n\nUser ID: ",userId,"\n\n");
+    
     const { data, error } = await supabase
       .from('generalUsers')
-      .insert([
+      .upsert([
         { auth_id:userId, user_name: username, phone_number: phone, showtime_preference: showtime },
       ])
       .select();
