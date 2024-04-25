@@ -12,13 +12,13 @@ export default async function ProfilePage () {
   if (err1) {console.log(err1)}
   if(!preferences) {return <div>Issue Loading Preferences, Check Development</div>}
   const userPreferences: UserPreferences = preferences[0];
-  const { data: generalUsers, error } = await supabase.from('generalUsers').select('user_name')
+  const { data: generalUsers, error } = await supabase.from('generalUsers').select('user_name, phone_number');
   if (error) {console.log(error)}
-  if(!generalUsers) {return <div>Issue Loading UserName, Check Development</div>}
+  if(!generalUsers) {return <div>Issue Loading UserName & Number, Check Development</div>}
   //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  DO NOT MODIFY  ^^^^^^^^^^^^
 
 
-  const {user_name}:{user_name:string} = generalUsers[0];
+  const {user_name, phone_number}:{user_name:string, phone_number:string} = generalUsers[0];
   const {fav_actors, fav_directors, fav_genres, fav_companies} = userPreferences;
 
   return (
@@ -41,6 +41,7 @@ export default async function ProfilePage () {
 			<div className="border-solid border-white border-2">This is the Profile Page</div>
 
       <div>{`This is the user name: ${user_name}`}</div>
+      <div>{`This is the user name: ${phone_number}`}</div>
       <div>{`This is the user email: ${user.email}`}</div>
 
       <div>This is how to render the arrays:</div>
