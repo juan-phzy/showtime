@@ -1,4 +1,5 @@
 import { MovieGluFilm } from "@/utils/constants";
+import { createClient } from "@/utils/supabase/server";
 
 
 //vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  DO NOT MODIFY  vvvvvvvvvv
@@ -48,6 +49,13 @@ async function getMoviesComingUp() {
 export default async function HomePage() {
 
 	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  DO NOT MODIFY  vvvvvvvvvv
+  const supabase = createClient();
+  const {data: { user }} = await supabase.auth.getUser();
+	if (!user) { return console.log("User not found")}
+  const { data: generalUsers, error } = await supabase.from('generalUsers').select('user_name');
+  if (error) {console.log(error)}
+  if(!generalUsers) {return <div>Issue Loading UserName, Check Development</div>}
+  const {user_name}:{user_name:string} = generalUsers[0];
 	const res1 = await getMoviesNowShowing();
 	const { data: { films:moviesNowShowing } } : { data: { films:MovieGluFilm[]}} = await res1.json();
 
@@ -72,6 +80,17 @@ export default async function HomePage() {
 			 */}
 
 			<div>This is the Home Page</div>
+      <div>{`This is the user name: ${user_name}`}</div>
+      <div>This is how to render the arrays:</div>
+      <div className="flex justify-start items-center w-full h-fit overflow-x-auto border-solid border-white border-2">
+        {
+          moviesNowShowing.map(
+            (movie) => {
+              return <div key={movie.film_id}>| {movie.film_name} |</div>
+            }
+        )
+        }
+      </div>
 		</section>
 	);
 }
