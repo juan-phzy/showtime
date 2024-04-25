@@ -1,3 +1,7 @@
+import { FaUserAlt, FaBell, FaFilm, FaHome  } from "react-icons/fa";
+
+
+
 export type FormSubmitFunction = (formData: FormData) => Promise<void>;
 
 export interface SignUpSearchParams {
@@ -114,3 +118,120 @@ export const GENRES = [
     "name": "Western"
   }
 ];
+
+export const NAVLINKS = [
+  {
+    href: "/protected",
+    label: "Home",
+    icon: FaHome,
+  },
+  {
+    href: "/protected/recommendations",
+    label: "Recs",
+    icon: FaBell,
+  },
+  {
+    href: "/protected/movies",
+    label: "Movies",
+    icon: FaFilm,
+  },
+  {
+    href: "/protected/profile",
+    label: "Profile",
+    icon: FaUserAlt,
+  }
+]
+
+export interface MovieGluFilm {
+  film_id: number;
+  imdb_id: number;
+  imdb_title_id: string;
+  film_name: string;
+  other_titles: string | null;
+  release_dates: ReleaseDate[];
+  age_rating: AgeRating[];
+  film_trailer: string;
+  synopsis_long: string;
+  images: Images;
+}
+
+export interface ReleaseDate {
+  release_date: string;
+  notes: string;
+}
+
+export interface AgeRating {
+  rating: string;
+  age_rating_image: string;
+  age_advisory: string;
+}
+
+export interface Images {
+  poster: { [key: string]: ImageDetails };
+  still: { [key: string]: ImageDetails };
+}
+
+export interface ImageDetails {
+  image_orientation: string;
+  region: string;
+  medium: ImageSize;
+}
+
+export interface ImageSize {
+  film_image: string;
+  width: number;
+  height: number;
+}
+
+const MOVIE_OBJECT_EXAMPLE = {
+  "film_id": 7772,
+  "imdb_id": 82971,
+  "imdb_title_id": "tt0082971",
+  "film_name": "Raiders of the Lost Ark",
+  "other_titles": null,
+  "release_dates": [
+      {
+          "release_date": "1992-07-01",
+          "notes": "XXX"
+      }
+  ],
+  "age_rating": [
+      {
+          "rating": "PG ",
+          "age_rating_image": "https://assets.movieglu.com/age_rating_logos/xx/pg.png",
+          "age_advisory": "Contains moderate violence and mild language"
+      }
+  ],
+  "film_trailer": "https://trailer.movieglu.com/7772_high.mp4",
+  "synopsis_long": "As the Third Reich continues its reign of terror, Adolf Hitler is on a quest for the legendary Ark os the Covenenant- resting place of the Ten Commandments- whose supernatural powers, legend says, can wipe out entire armies.\n\nThe U.S. Government turns to Dr. Indiana Jones, for the mission.  Relentlessly pursued by Hitler's henchmen, Indy infiltrartes their massive digging operation in a race against time to discover the Well od the Souls, where the Ark has lain undisturbed for centuries.",
+  "images": {
+      "poster": {
+          "1": {
+              "image_orientation": "portrait",
+              "region": "UK",
+              "medium": {
+                  "film_image": "https://image.movieglu.com/7772/GBR_007772h0.jpg",
+                  "width": 200,
+                  "height": 300
+              }
+          }
+      },
+      "still": {
+          "1": {
+              "image_orientation": "landscape",
+              "medium": {
+                  "film_image": "https://image.movieglu.com/7772/007772h2.jpg",
+                  "width": 300,
+                  "height": 200
+              }
+          }
+      }
+  }
+}
+
+export interface UserPreferences {
+  fav_actors: string[];
+  fav_directors: string[];
+  fav_genres: string[];
+  fav_companies: string[];
+}
