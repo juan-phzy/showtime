@@ -120,6 +120,8 @@ export default async function MoviesPage() {
   )
 }
 
+// Commented out interfaces to use as a reference for retrieving the information
+
 /*
 export interface MovieGluFilm {
   film_id: number;
