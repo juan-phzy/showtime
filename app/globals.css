@@ -195,7 +195,7 @@
 		gap-2
 		overflow-x-auto;
 	}
-}
+}  
 
 /* Buttons */
 @layer components {
@@ -240,4 +240,35 @@
 		gap-1
 		px-2;
 	}
+
+	.movie-card{
+		
+	} 
+}
+
+/* Movies Page */
+@layer components{
+	.movies-page-container{
+		@apply border-solid border-4 border-blue-400
+		flex justify-center items-center
+		w-full h-full
+		relative
+		p-5;
+	}
+
+	.movies-page-content{
+		@apply border-dotted border-2 border-orange-400
+		flex flex-col justify-center items-center
+		w-full h-full max-w-[1000px]
+		gap-4
+		relative;
+	}
+
+	.movies-page-header{
+		@apply flex justify-center items-center 
+		w-full h-fit 
+		gap-4;
+	}
+
+	
 }
