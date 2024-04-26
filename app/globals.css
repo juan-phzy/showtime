@@ -247,6 +247,10 @@
 		gap-1
 		px-2;
 	}
+
+	.movie-card{
+		@apply w-full h-fit items-center;
+	}
 	.selected {
 		@apply border-solid border-2 border-[#F47A62]
 		bg-[#af8076]
