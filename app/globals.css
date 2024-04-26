@@ -296,6 +296,29 @@
 		w-full h-full
 		relative;
 	}	
+	.home-page-content{
+		@apply 
+		border-solid border-2 border-orange-400
+		flex flex-col justify-center items-center
+		w-full h-full 
+		gap-4
+		relative;
+
+	}
+	.home-page-textfield{
+		@apply
+		border-solid border-green-400
+		flex flex-col  justify-center items-center
+		w-full h-[70px]
+		relative;
+	}
+	.home-page-welcome-text{
+		@apply
+      flex justify-center items-center
+      w-full
+      text-white text-2xl font-bold
+      relative;
+	}
 }
 
 /* Movies Page */ 

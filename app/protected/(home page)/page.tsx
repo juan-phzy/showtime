@@ -79,8 +79,12 @@ export default async function HomePage() {
 			 * 
 			 */}
 
-			<div>This is the Home Page</div>
-      <div>{`This is the user name: ${user_name}`}</div>
+      
+      <div className = "home-page-textfield">
+        <div className = "home-page-welcome-text" >{`Welcome Back ${user_name}!`}</div>
+      </div>
+      <div className = "home-page-content">
+      
       <div>This is how to render the arrays:</div>
       <div className="flex justify-start items-center w-full h-fit overflow-x-auto border-solid border-white border-2">
         {
@@ -90,6 +94,7 @@ export default async function HomePage() {
             }
         )
         }
+      </div>
       </div>
 		</section>
 	);
