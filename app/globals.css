@@ -308,7 +308,7 @@
 		relative;
 	}	
 }
-
+/* Profile Page */
 @layer components {
 	.profile-page-container {
 	  @apply
@@ -321,17 +321,20 @@
 	.user-info {
 	  @apply
 		w-full flex flex-col
-		mt-8 mb-6 px-6; /* Add more space at the top and bottom of the user info */
+		mt-8 mb-6 px-6; 
 	}
   
 	.user-info h1, .preferences h1 {
 	  @apply
-		text-3xl font-bold mb-4; /* Increase bottom margin for spacing */
+		text-3xl 
+		font-bold 
+		mb-4; 
 	}
 	
 	.user-info p, .preferences h2, .favorite-item h2 {
 	  @apply
-		text-base mb-4; /* Increase bottom margin for spacing */
+		text-base 
+		mb-4; 
 	}
 	
 	.preferences {
@@ -341,47 +344,100 @@
   
 	.preferences h1 {
 	  @apply
-		mb-6; /* Increase bottom margin for more space below the preferences title */
+		mb-6; 
 	}
   
 	.favorite-item h2 {
 	  @apply
-		font-semibold mb-4; /* Consistent spacing between the title and the first item */
+		font-semibold mb-4; 
 	}
 	
 	.favorite-item {
 		@apply
 		  w-full mb-6 px-4; 
-	  }
-  
-	  .item {
-		@apply
-		  bg-gray-700 
-		  rounded-md
-		  py-1 
-		  my-1 
-		  mx-2 
-		  text-sm 
-		  inline-flex 
-		  items-center 
-		  pl-2
-		  pr-2; /* Add left padding to balance the space added to the right of the image */
-	  }
-	
-	  .item-image {
-		@apply
-		  w-8 h-8 rounded-full mr-3; /* Adjusted right margin */
-	  }
-	  
-	  .item-text {
-		@apply
-		  truncate; /* Prevent text from overflowing the box */
-	  }
-	
-	.navigation {
-	  @apply
-		fixed inset-x-0 bottom-0
-		w-full bg-black text-white py-2
-		flex justify-around items-center;
 	}
-  }
+  
+	.item {
+	@apply
+		bg-gray-700 
+		rounded-md
+		py-1 
+		my-1 
+		mx-2 
+		text-sm 
+		inline-flex 
+		items-center 
+		pl-2
+		pr-2; 
+	}
+
+	.item-image {
+	@apply
+		w-8 h-8 
+		rounded-full 
+		mr-3; 
+	}
+	
+	.item-text {
+	@apply
+		truncate; 
+	}
+
+  .icon {
+    @apply
+      h-4 w-auto 
+      align-middle
+      mx-2; 
+  	}
+
+  .edit-icon {
+    @apply
+      inline-block;
+  	}
+
+  .phone-icon, .email-icon {
+    @apply
+      inline-block;
+  	}
+
+  .user-info-title {
+    @apply 
+		flex items-center 
+		justify-between;
+  	}
+  
+  .user-info-text {
+    @apply 
+		flex items-center;
+  	}
+
+  .icon-small {
+    @apply 
+		h-4 w-4;
+  	}
+
+  .icon-margin {
+    @apply 
+		mr-2;
+  	}
+
+	.edit-icon {
+	@apply 
+	absolute right-4;
+	}
+
+	@media (min-width: 768px) {
+	.edit-icon {
+		@apply right-2;
+	}
+
+}
+	
+.navigation {
+	@apply
+	fixed inset-x-0 bottom-0
+	w-full bg-black text-white py-2
+	flex justify-around items-center;
+	}
+
+}

@@ -23,14 +23,25 @@ export default async function ProfilePage () {
   const formattedPhoneNumber = phone_number.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
 
   return (
-    <section className="profile-page-container">
-      <div className="user-info">
-        <h1>{user_name}</h1>
-        <p>{formattedPhoneNumber}</p>
-        <p>{user.email}</p>
-      </div>
+   <section className="profile-page-container">
+  <div className="user-info">
+    <h1 className="user-info-title">
+      {user_name} <img src="/images/edit-icon.png" alt="Edit Icon" className="icon-small"/>
+    </h1>
+    <p className="user-info-text">
+      <img src="/images/phone.png" alt="Phone Icon" className="icon-small icon-margin"/>
+      {formattedPhoneNumber}
+    </p>
+    <p className="user-info-text">
+      <img src="/images/email.png" alt="Email Icon" className="icon-small icon-margin"/>
+      {user.email}
+    </p>
+  </div>
       <div className="preferences">
-        <h1>Preferences</h1>
+        <div className="flex justify-between items-center">
+          <h1>Preferences</h1>
+          <img src="/images/edit-icon.png" alt="Edit Icon" className="inline-block h-5 w-5"/>
+        </div>
         <div className="favorite-item">
           <h2>Favorite Directors</h2>
           {fav_directors.map((director, index) => (
