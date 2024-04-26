@@ -25,35 +25,46 @@ export default async function ProfilePage () {
   return (
     <section className="profile-page-container">
       <div className="user-info">
-        <h1>Username</h1>
-        <p>{user_name}</p>
+        <h1>{user_name}</h1>
         <p>{formattedPhoneNumber}</p>
         <p>{user.email}</p>
       </div>
       <div className="preferences">
-        <h2>Preferences</h2>
+        <h1>Preferences</h1>
         <div className="favorite-item">
-          <h3>Favorite Directors</h3>
+          <h2>Favorite Directors</h2>
           {fav_directors.map((director, index) => (
-            <div key={index} className="item">{director}</div>
+            <div key={index} className="item">
+              <img src={director} alt={director} className="item-image"/>
+              <span className="item-text">{director}</span>
+            </div>
           ))}
         </div>
         <div className="favorite-item">
-          <h3>Favorite Actors</h3>
+          <h2>Favorite Actors</h2>
           {fav_actors.map((actor, index) => (
-            <div key={index} className="item">{actor}</div>
+            <div key={index} className="item">
+              <img src={actor} alt={actor} className="item-image"/>
+              <span className="item-text">{actor}</span>
+            </div>
           ))}
         </div>
         <div className="favorite-item">
-          <h3>Favorite Genres</h3>
+          <h2>Favorite Genres</h2>
           {fav_genres.map((genre, index) => (
-            <div key={index} className="item">{genre}</div>
+            <div key={index} className="item">
+              <img src={genre} alt={genre} className="item-image"/>
+              <span className="item-text">{genre}</span>
+            </div>
           ))}
         </div>
         <div className="favorite-item">
-          <h3>Favorite Companies</h3>
+          <h2>Favorite Companies</h2>
           {fav_companies.map((company, index) => (
-            <div key={index} className="item">{company}</div>
+            <div key={index} className="item">
+              <img src={company} alt={company} className="item-image"/>
+              <span className="item-text">{company}</span>
+            </div>
           ))}
         </div>
       </div>

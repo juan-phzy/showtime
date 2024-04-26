@@ -309,69 +309,79 @@
 	}	
 }
 
-/* Profile Page */
 @layer components {
 	.profile-page-container {
 	  @apply
-		border-4 border-gray-300
 		flex flex-col
-		w-full min-h-screen
+		w-full h-full
 		bg-black text-white
-		px-4 py-2; 
+		p-0 m-0;
 	}
-	
+  
 	.user-info {
 	  @apply
-		flex flex-col items-start
-		mb-8; 
+		w-full flex flex-col
+		mt-8 mb-6 px-6; /* Add more space at the top and bottom of the user info */
+	}
+  
+	.user-info h1, .preferences h1 {
+	  @apply
+		text-3xl font-bold mb-4; /* Increase bottom margin for spacing */
 	}
 	
-	.user-info h1 {
+	.user-info p, .preferences h2, .favorite-item h2 {
 	  @apply
-		text-4xl font-bold
-		mb-2; 
-	}
-	
-	.user-info p {
-	  @apply
-		text-xl
-		mb-1; 
+		text-base mb-4; /* Increase bottom margin for spacing */
 	}
 	
 	.preferences {
 	  @apply
-		w-full; 
+		w-full px-4;
+	}
+  
+	.preferences h1 {
+	  @apply
+		mb-6; /* Increase bottom margin for more space below the preferences title */
+	}
+  
+	.favorite-item h2 {
+	  @apply
+		font-semibold mb-4; /* Consistent spacing between the title and the first item */
 	}
 	
-	.preferences h2 {
-	  @apply
-		text-3xl font-bold
-		mb-4; 
-	}
-
 	.favorite-item {
-	  @apply
-		flex flex-row flex-wrap
-		justify-start items-center
-		mb-6; 
-	}
-	
-	.favorite-item h3 {
 		@apply
-		  w-full text-2xl font-semibold
-		  mb-3; /* Margin bottom for category titles */
+		  w-full mb-6 px-4; 
 	  }
-	  
+  
 	  .item {
 		@apply
-		  bg-gray-700 rounded-md
-		  px-3 py-1 m-1 text-lg; /* Padding, margin and text size for items */
+		  bg-gray-700 
+		  rounded-md
+		  py-1 
+		  my-1 
+		  mx-2 
+		  text-sm 
+		  inline-flex 
+		  items-center 
+		  pl-2
+		  pr-2; /* Add left padding to balance the space added to the right of the image */
+	  }
+	
+	  .item-image {
+		@apply
+		  w-8 h-8 rounded-full mr-3; /* Adjusted right margin */
 	  }
 	  
-	  .navigation {
+	  .item-text {
 		@apply
-		  fixed bottom-0
-		  w-full bg-gray-800 text-white py-3
-		  flex flex-row justify-around; /* Style for navigation */
+		  truncate; /* Prevent text from overflowing the box */
 	  }
+	
+	.navigation {
+	  @apply
+		fixed inset-x-0 bottom-0
+		w-full bg-black text-white py-2
+		flex justify-around items-center;
 	}
+  }
