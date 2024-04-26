@@ -20,46 +20,46 @@ export default async function ProfilePage () {
 
   const {user_name, phone_number}:{user_name:string, phone_number:string} = generalUsers[0];
   const {fav_actors, fav_directors, fav_genres, fav_companies} = userPreferences;
+  const formattedPhoneNumber = phone_number.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
 
   return (
     <section className="profile-page-container">
-			{/**
-			 * 
-			 * The data sets you need are already set up.
-       * They are: user_name, fav_actors, fav_directors, fav_genres, fav_companies
-       * These are all string arrays
-       * 
-       * The user information you need is the user_name and the user email
-       * Examples of how to render these in the html are show below
-       * 
-			 * All of your "HTML" goes within this profile-page-container section
-			 * The class name profile-page-container is already set up for you in the globals.css file
-			 * Add the rest of your classes under it
-			 * 
-			 */}
-
-			<div className="border-solid border-white border-2">This is the Profile Page</div>
-
-      <div>{`This is the user name: ${user_name}`}</div>
-      <div>{`This is the user name: ${phone_number}`}</div>
-      <div>{`This is the user email: ${user.email}`}</div>
-
-      <div>This is how to render the arrays:</div>
-
-      <div className="flex justify-start items-center w-full h-fit overflow-x-auto border-solid border-white border-2">
-        {fav_actors.map((actor) => <div key={actor}>{actor}, </div>)}
+      <div className="user-info">
+        <h1>Username</h1>
+        <p>{user_name}</p>
+        <p>{formattedPhoneNumber}</p>
+        <p>{user.email}</p>
       </div>
-
-      <div>These are the rest of the arrays:</div>
-      <div className="flex justify-start items-center w-full h-fit overflow-x-auto border-solid border-white border-2">
-        {fav_directors.map((director) => <div key={director}>{director}, </div>)}
+      <div className="preferences">
+        <h2>Preferences</h2>
+        <div className="favorite-item">
+          <h3>Favorite Directors</h3>
+          {fav_directors.map((director, index) => (
+            <div key={index} className="item">{director}</div>
+          ))}
+        </div>
+        <div className="favorite-item">
+          <h3>Favorite Actors</h3>
+          {fav_actors.map((actor, index) => (
+            <div key={index} className="item">{actor}</div>
+          ))}
+        </div>
+        <div className="favorite-item">
+          <h3>Favorite Genres</h3>
+          {fav_genres.map((genre, index) => (
+            <div key={index} className="item">{genre}</div>
+          ))}
+        </div>
+        <div className="favorite-item">
+          <h3>Favorite Companies</h3>
+          {fav_companies.map((company, index) => (
+            <div key={index} className="item">{company}</div>
+          ))}
+        </div>
       </div>
-      <div className="flex justify-start items-center w-full h-fit overflow-x-auto border-solid border-white border-2">
-        {fav_genres.map((genre) => <div key={genre}>{genre}, </div>)}
-      </div>
-      <div className="flex justify-start items-center w-full h-fit overflow-x-auto border-solid border-white border-2">
-        {fav_companies.map((company) => <div key={company}>{company}, </div>)}
-      </div>
-		</section>
-  )
+      <nav className="navigation">
+        {/* Navigation items */}
+      </nav>
+    </section>
+  );
 }
