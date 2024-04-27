@@ -21,6 +21,7 @@
 			background-color: rgb(15, 0, 0);
 			color: white;
 		}
+	
 }
 
 /* Root Layout & Protected Layout */
@@ -249,8 +250,17 @@
 	}
 
 	.movie-card{
-		@apply w-full h-fit items-center;
+		@apply border-solid h-[300px] border-white 
+		border-2
+	  hover:bg-white/60
+	    w-[150px] lg:w-[200px]
+		mr-[2px] lg:mr-5
+		mb-[20px] lg:mb-[50px];
+
+		
+		
 	}
+	
 	.selected {
 		@apply border-solid border-2 border-[#F47A62]
 		bg-[#af8076]
@@ -324,6 +334,12 @@
 		@apply flex justify-center items-center 
 		w-full h-fit 
 		gap-4;
+	}
+
+	.movie-card-container{
+		@apply w-full h-fit items-center;
+		max-height: calc(100vh - 200px);
+		overflow-y:auto;
 	}
 
 	
