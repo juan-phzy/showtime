@@ -40,7 +40,7 @@
 		@apply 
 		/* border-solid border-4 border-orange-400 */
 		flex flex-col justify-center items-center
-		w-full h-full
+		w-full h-[calc(100%-90px)]
 		relative;
 	}
 }
@@ -257,7 +257,7 @@
 @layer components {
 	.navbar-container {
 		@apply 
-		/* border-solid border-4 border-blue-400 */
+		/* border-dotted border-2 border-purple-400 */
 		flex justify-center items-center md:justify-between
 		w-full h-[90px]
 		relative
@@ -291,18 +291,91 @@
 @layer components {
 	.home-page-container {
 		@apply 
-		border-solid border-4 border-blue-400
-		flex flex-col justify-center items-center
+		border-solid border-2 border-blue-400
+		flex justify-center items-center
 		w-full h-full
+		p-4
 		relative;
-	}	
+	}
+	.home-page-content{
+		@apply 
+		border-solid border-2 border-red-500
+		flex flex-col justify-center items-center
+		max-w-[1000px]
+		w-full h-full 
+		relative
+		gap-4;
+	}
+	.home-page-header {
+		@apply
+		border-solid border-green-400 border-2
+		flex justify-center items-center
+		w-full h-fit
+		text-2xl
+		relative;
+	}
+	.home-page-movies {
+		@apply 
+		border-solid border-green-600 border-2
+		flex flex-col justify-start items-center
+		w-full h-full
+		overflow-y-auto
+		relative;
+	}
+	.home-page-movies-now-showing, .home-page-recommendations {
+		@apply 
+		border-solid border-2 border-yellow-400
+		flex flex-col justify-center items-start
+		w-full h-fit
+		relative
+		p-2;
+	}
+	.home-page-movies-coming-up {
+		@apply 
+		border-solid border-2 border-purple-400
+		flex flex-col justify-center items-center
+		w-full h-fit
+		relative;
+	}
+	.hp-mcu-title {
+		@apply 
+		/* border-dotted border-[1px] border-red-400 */
+		flex justify-between items-center
+		w-full h-fit
+		relative
+		p-2;
+	}
+	.hp-mcu-movies {
+		@apply 
+		/* border-solid border-[1px] border-green-400 */
+		flex justify-start items-center
+		w-full h-fit gap-2
+		overflow-x-auto
+		relative
+		p-2;
+	}
+	.hp-mcu-movie {
+		@apply 
+		/* border-solid border-[1px] border-blue-400 */
+		flex flex-col justify-center items-center
+		shrink-0
+		w-[160px] h-fit
+		relative;
+	
+	}
+	.ellipsed {
+		white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	}
+	
 }
 
 /* Movies Page */ 
 @layer components {
 	.movies-page-container {
 		@apply 
-		border-solid border-4 border-blue-400
+		/* border-solid border-4 border-blue-400 */
 		flex flex-col justify-center items-center
 		w-full h-full
 		relative;

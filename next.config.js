@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    images: {
+		remotePatterns: [
+		  {
+			protocol: 'https',
+			hostname: 'image.movieglu.com',
+		  },
+		],
+	},
     // env: {
     //     MOVIEGULU_CLIENT:"NYIT",
     //     MOVIEGULU_API_ENDPOINT:"https://api-gate2.movieglu.com",

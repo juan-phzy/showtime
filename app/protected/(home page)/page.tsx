@@ -1,5 +1,7 @@
+import HomeMovieList from "@/components/HomeMovieList";
 import { MovieGluFilm } from "@/utils/constants";
 import { createClient } from "@/utils/supabase/server";
+import Image from "next/image";
 
 
 //vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  DO NOT MODIFY  vvvvvvvvvv
@@ -47,50 +49,56 @@ async function getMoviesComingUp() {
 
 
 export default async function HomePage() {
-
-	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  DO NOT MODIFY  vvvvvvvvvv
+  //vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  DO NOT MODIFY  vvvvvvvvvv
   const supabase = createClient();
-  const {data: { user }} = await supabase.auth.getUser();
-	if (!user) { return console.log("User not found")}
-  const { data: generalUsers, error } = await supabase.from('generalUsers').select('user_name');
-  if (error) {console.log(error)}
-  if(!generalUsers) {return <div>Issue Loading UserName, Check Development</div>}
-  const {user_name}:{user_name:string} = generalUsers[0];
-	const res1 = await getMoviesNowShowing();
-	const { data: { films:moviesNowShowing } } : { data: { films:MovieGluFilm[]}} = await res1.json();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) {
+    return console.log("User not found");
+  }
+  const { data: generalUsers, error } = await supabase
+    .from("generalUsers")
+    .select("user_name");
+  if (error) {
+    console.log(error);
+  }
+  if (!generalUsers) {
+    return <div>Issue Loading UserName, Check Development</div>;
+  }
+  const { user_name }: { user_name: string } = generalUsers[0];
+  const res1 = await getMoviesNowShowing();
+  const {
+    data: { films: moviesNowShowing },
+  }: { data: { films: MovieGluFilm[] } } = await res1.json();
 
-	const res2 = await getMoviesComingUp();
-	const { data: { films:moviesComingUp } } : { data: { films:MovieGluFilm[]}} = await res2.json();
-	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  DO NOT MODIFY  ^^^^^^^^^^^^
-	
-	return (
-		<section className="home-page-container">
-			{/**
-			 * 
-			 * The two data sets you need are: moviesNowShowing and moviesComingUp
-			 * 
-			 * They are arrays of MovieGluFilm objects and they are already set up in this file
-			 * You can view the MovieGluFilm interface in the utils/constants.ts file
-			 * There is also an example of a MovieGluFilm object in the utils/constants.ts file
-			 * 
-			 * All of your "HTML" goes within this home-page-container section
-			 * The class name home-page-container is already set up for you in the globals.css file
-			 * Add the rest of your classes under it
-			 * 
-			 */}
+  const res2 = await getMoviesComingUp();
+  const {
+    data: { films: moviesComingUp },
+  }: { data: { films: MovieGluFilm[] } } = await res2.json();
+  console.log(moviesComingUp);
+  //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  DO NOT MODIFY  ^^^^^^^^^^^^
 
-			<div>This is the Home Page</div>
-      <div>{`This is the user name: ${user_name}`}</div>
-      <div>This is how to render the arrays:</div>
-      <div className="flex justify-start items-center w-full h-fit overflow-x-auto border-solid border-white border-2">
-        {
-          moviesNowShowing.map(
-            (movie) => {
-              return <div key={movie.film_id}>| {movie.film_name} |</div>
-            }
-        )
-        }
+  return (
+    <section className="home-page-container">
+      <div className="home-page-content">
+        <div className="home-page-header">{`Welcome Back ${user_name}!`}</div>
+
+        <div className="home-page-movies">
+          <div className="home-page-movies-now-showing">
+            <HomeMovieList title="Now Showing" movies={moviesNowShowing} />
+          </div>
+         
+          <div className="home-page-movies-coming-up">
+            <HomeMovieList title="Coming Soon" movies={moviesComingUp} />
+          </div>
+            
+          <div className="home-page-recommendations">
+            <HomeMovieList title="Recommendations" movies={[]} />
+          </div>
+          
+        </div>
       </div>
-		</section>
-	);
+    </section>
+  );
 }
