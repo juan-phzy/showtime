@@ -84,17 +84,40 @@ export default async function HomePage() {
         <div className = "home-page-welcome-text" >{`Welcome Back ${user_name}!`}</div>
       </div>
       <div className = "home-page-content">
-      
-      <div>This is how to render the arrays:</div>
-      <div className="flex justify-start items-center w-full h-fit overflow-x-auto border-solid border-white border-2">
+
+        <h1 className = "home-page-category-text">Movies Out Now</h1>
+        <div className="home-page-movies"> 
+          
         {
           moviesNowShowing.map(
             (movie) => {
-              return <div key={movie.film_id}>| {movie.film_name} |</div>
+              return <div key={movie.film_id}><img src={Object.values(movie.images.poster)[0].medium.film_image} 
+              alt={movie.film_name} className="home-page-images" /> 
+              |{movie.film_name}  <h3>|{movie.release_dates[0].release_date}</h3> <div className="age-rating">
+            <img src={movie.age_rating[0].age_rating_image} alt={`Rating: ${movie.age_rating[0].rating}`} className="w-8 h-auto" />
+            <h3 className="text-xs">{movie.age_rating[0].rating} - {movie.age_rating[0].age_advisory}</h3>
+          </div></div>
+              
             }
+            
         )
         }
-      </div>
+        </div>
+        <h1 className = "home-page-category-text">Movies Coming Soon</h1>
+        <div className="home-page-movies">
+          {
+            moviesComingUp.map(
+              (movie) => {
+                return <div key={movie.film_id}><img src={movie.images.poster.length > 0 ?Object.values(movie.images.poster)[0].medium.film_image : []} 
+                alt={movie.film_name} className="home-page-images" /> 
+                |{movie.film_name}  <h3>|{movie.release_dates[0].release_date}</h3> <div className="age-rating">
+            <img src={movie.age_rating[0].age_rating_image} alt={`Rating: ${movie.age_rating[0].rating}`} className="w-8 h-auto" />
+            <p className="text-xs">{movie.age_rating[0].rating} - {movie.age_rating[0].age_advisory}</p>
+          </div></div>
+              }
+            )
+          }
+        </div>
       </div>
 		</section>
 	);

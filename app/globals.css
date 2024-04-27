@@ -309,16 +309,43 @@
 		@apply
 		border-solid border-green-400
 		flex flex-col  justify-center items-center
-		w-full h-[70px]
+		w-full h-fit
 		relative;
 	}
 	.home-page-welcome-text{
 		@apply
       flex justify-center items-center
-      w-full
+      w-full h-auto
       text-white text-2xl font-bold
       relative;
 	}
+	.home-page-movies{
+		@apply 
+		border-dotted border-2 border-purple-400
+		flex justify-start items-center 
+		w-full h-fit 
+		border-solid border-white border-2
+		relative;
+	}
+	.home-page-images {
+		@apply border-dotted border-2 border-yellow-400
+		flex flex-col justify-center 
+		w-auto h-[250px] max-w-[200px]
+		object-cover
+		rounded
+		p-5 gap-4
+		mr-20
+		relative;
+	}
+	.home-page-category-text{
+		@apply
+		border-dotted border-2 border-blue-400
+		flex flex-col justify-start
+		w-full h-fit
+		text-sm
+		relative;
+	}
+
 }
 
 /* Movies Page */ 
