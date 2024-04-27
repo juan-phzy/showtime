@@ -80,7 +80,13 @@ export default async function HomePage() {
   return (
     <section className="home-page-container">
       <div className="home-page-content">
-        <div className="home-page-header">{`Welcome Back ${user_name}!`}</div>
+        <div className="home-page-header">
+          <span className="hp-header-mobile">{`Welcome Back ${user_name}!`}</span>
+          <span className="hp-header-large">
+            <span>{`Welcome Back Showtimer!`}</span>
+            <span>{`Logged In To: ${user_name}`}</span>
+          </span>
+        </div>
 
         <div className="home-page-body">
           <div className="home-page-movie-list-container">

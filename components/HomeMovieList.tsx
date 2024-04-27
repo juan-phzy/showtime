@@ -22,7 +22,7 @@ const HomeMovieList = ({ title, movies }: Props) => {
             );
           })
         ) : (
-          <div className="flex justify-center items-center w-full h-full">
+          <div className="flex justify-center items-center w-full h-full p-5">
             <span>No movies found</span>
           </div>
         )}
