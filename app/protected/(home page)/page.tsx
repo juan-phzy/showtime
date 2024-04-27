@@ -74,7 +74,6 @@ export default async function HomePage() {
   const {
     data: { films: moviesComingUp },
   }: { data: { films: MovieGluFilm[] } } = await res2.json();
-  console.log(moviesComingUp);
   //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  DO NOT MODIFY  ^^^^^^^^^^^^
 
   return (

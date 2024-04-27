@@ -235,3 +235,20 @@ export interface UserPreferences {
   fav_genres: string[];
   fav_companies: string[];
 }
+
+export interface MovieTheater {
+  cinema_id: string;
+  cinema_name: string;
+  address: string;
+  address2: string;
+  city: string;
+  state: string;
+  county: string;
+  country: string;
+  postcode: string;
+  phone: string;
+  lat: number;
+  lng: number;
+  distance: number;
+  logo_url: string;
+}

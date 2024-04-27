@@ -112,8 +112,9 @@
   }
   .complete-signup-content {
     @apply border-solid border-4 border-orange-400
-		flex flex-col justify-center items-center
+		flex flex-col justify-start items-center
 		w-full h-full max-w-[1000px]
+		overflow-y-auto
 		relative
 		gap-2;
   }
@@ -408,6 +409,61 @@
     @apply border-solid border-4 border-blue-400
 		flex flex-col justify-center items-center
 		w-full h-full
-		relative;
+		relative
+		p-2;
   }
+	.profile-page-content {
+		@apply border-solid border-4 border-orange-400
+		flex flex-col justify-start items-center
+		w-full h-full max-w-[1000px]
+		overflow-y-auto
+		relative
+		gap-4;
+	}
+	.profile-page-section {
+		@apply border-solid border-4 border-purple-400
+		flex flex-col justify-center items-center
+		w-full h-fit
+		relative
+		gap-1;
+	}
+	.profile-title {
+		@apply border-solid border-4 border-yellow-400
+		flex justify-start items-center
+		w-full h-fit
+		relative
+		text-2xl;
+	}
+	.profile-section-content {
+		@apply border-solid border-4 border-green-400
+		flex flex-col justify-center items-start
+		w-full h-fit
+		relative
+		gap-1;
+	}
+	.profile-subtitle {
+		@apply border-solid border-4 border-blue-400
+		flex justify-start items-center
+		w-full h-fit
+		relative
+		text-lg;
+	}
+	.profile-list {
+		@apply border-solid border-white border-2
+		flex justify-start items-center flex-wrap
+		w-full h-fit max-h-[100px]
+		gap-2;
+	}
+	.profile-list-item {
+		@apply border-solid border-2 border-red-400
+		flex justify-center items-center
+		w-fit h-fit
+		shrink-0
+		rounded-lg
+		relative
+		text-center
+		text-[.6rem]
+		p-1;
+	}
+
 }
