@@ -1,5 +1,4 @@
 "use client"
-
 import { createClient } from "@/utils/supabase/client";
 import { CinemaData, SignUpSearchParams } from "@/utils/constants";
 import CinemaCard from '../cards/CinemaCard';

@@ -21,6 +21,7 @@
 			background-color: rgb(15, 0, 0);
 			color: white;
 		}
+	
 }
 
 /* Root Layout & Protected Layout */
@@ -247,6 +248,19 @@
 		gap-1
 		px-2;
 	}
+
+	.movie-card{
+		@apply border-solid h-[300px] border-white 
+		border-2
+	  hover:bg-white/60
+	    w-[150px] lg:w-[200px]
+		mr-[2px] lg:mr-5
+		mb-[20px] lg:mb-[50px];
+
+		
+		
+	}
+	
 	.selected {
 		@apply border-solid border-2 border-[#F47A62]
 		bg-[#af8076]
@@ -298,15 +312,37 @@
 	}	
 }
 
-/* Movies Page */ 
-@layer components {
-	.movies-page-container {
-		@apply 
-		border-solid border-4 border-blue-400
-		flex flex-col justify-center items-center
+/* Movies Page */
+@layer components{
+	.movies-page-container{
+		@apply border-solid border-4 border-blue-400
+		flex justify-center items-center
 		w-full h-full
+		relative
+		p-5;
+	}
+
+	.movies-page-content{
+		@apply border-dotted border-2 border-orange-400
+		flex flex-col justify-center items-center
+		w-full h-full max-w-[1000px]
+		gap-4
 		relative;
-	}	
+	}
+
+	.movies-page-header{
+		@apply flex justify-center items-center 
+		w-full h-fit 
+		gap-4;
+	}
+
+	.movie-card-container{
+		@apply w-full h-fit items-center;
+		max-height: calc(100vh - 200px);
+		overflow-y:auto;
+	}
+
+	
 }
 
 /* Profile Page */ 
