@@ -1,6 +1,6 @@
 "use client"
 
-import {useState,useEffect} from "react"
+import {useState} from "react"
 import {MovieGluFilm} from "@/utils/constants"
 import MovieCard from "@/components/cards/MovieCard"
 

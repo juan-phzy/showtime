@@ -11,7 +11,7 @@ const TERRITORY = process.env.MOVIEGULU_TERRITORY;
 const API_VERSION = process.env.MOVIEGULU_API_VERSION;
 const GEOLOC = process.env.MOVIEGULU_GEOLOCATION;
 async function getMoviesNowShowing() {
-  const res = await fetch(`${API_URL}/filmsNowShowing/?n=10`, {
+  const res = await fetch(`${API_URL}/filmsNowShowing/?n=7`, {
 		method: "GET",
     headers: {
       "client":CLIENT ? CLIENT : "",
