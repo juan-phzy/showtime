@@ -1,4 +1,3 @@
-# This is a test 
 # Welcome to Showtime !
 ### An academic project for Intro to Software Engineering at NYIT Spring '24
 
