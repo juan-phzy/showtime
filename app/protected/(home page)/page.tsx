@@ -1,8 +1,6 @@
 import HomeMovieList from "@/components/HomeMovieList";
 import { MovieGluFilm } from "@/utils/constants";
 import { createClient } from "@/utils/supabase/server";
-import Image from "next/image";
-
 
 //vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  DO NOT MODIFY  vvvvvvvvvv
 const API_URL = process.env.MOVIEGULU_API_ENDPOINT;
@@ -84,16 +82,16 @@ export default async function HomePage() {
       <div className="home-page-content">
         <div className="home-page-header">{`Welcome Back ${user_name}!`}</div>
 
-        <div className="home-page-movies">
-          <div className="home-page-movies-now-showing">
+        <div className="home-page-body">
+          <div className="home-page-movie-list-container">
             <HomeMovieList title="Now Showing" movies={moviesNowShowing} />
           </div>
          
-          <div className="home-page-movies-coming-up">
+          <div className="home-page-movie-list-container">
             <HomeMovieList title="Coming Soon" movies={moviesComingUp} />
           </div>
             
-          <div className="home-page-recommendations">
+          <div className="home-page-movie-list-container">
             <HomeMovieList title="Recommendations" movies={[]} />
           </div>
           

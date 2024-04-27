@@ -247,6 +247,7 @@
 		gap-1
 		px-2;
 	}
+	
 	.selected {
 		@apply border-solid border-2 border-[#F47A62]
 		bg-[#af8076]
@@ -314,7 +315,7 @@
 		text-2xl
 		relative;
 	}
-	.home-page-movies {
+	.home-page-body {
 		@apply 
 		border-solid border-green-600 border-2
 		flex flex-col justify-start items-center
@@ -322,15 +323,8 @@
 		overflow-y-auto
 		relative;
 	}
-	.home-page-movies-now-showing, .home-page-recommendations {
-		@apply 
-		border-solid border-2 border-yellow-400
-		flex flex-col justify-center items-start
-		w-full h-fit
-		relative
-		p-2;
-	}
-	.home-page-movies-coming-up {
+	
+	.home-page-movie-list-container {
 		@apply 
 		border-solid border-2 border-purple-400
 		flex flex-col justify-center items-center
@@ -373,13 +367,56 @@
 
 /* Movies Page */ 
 @layer components {
-	.movies-page-container {
-		@apply 
-		/* border-solid border-4 border-blue-400 */
-		flex flex-col justify-center items-center
+	.movies-page-container{
+		@apply border-dotted border-4 border-blue-400
+		flex justify-center items-center
 		w-full h-full
-		relative;
-	}	
+		relative
+		p-2;
+	}
+
+	.movies-page-content{
+		@apply border-solid border-4 border-green-400
+		flex flex-col justify-center items-center
+		w-full h-full max-w-[1000px]
+		relative
+		gap-4;
+	}
+
+	.movies-page-header {
+		@apply border-solid border-4 border-purple-400
+		flex justify-center items-center
+		w-full h-fit
+		relative
+		text-lg
+		gap-4;
+	}
+
+	.movies-page-toggle-btn {
+		@apply border-solid border-4 border-yellow-400
+		flex justify-center items-center
+		w-[40%] h-fit
+		relative
+		p-2;
+	
+	}
+
+	.movies-page-cards-container {
+		@apply border-solid border-2 border-red-400
+		flex justify-evenly items-center flex-wrap
+		overflow-y-auto
+		w-full h-full
+		relative
+		gap-2;
+	}
+
+	.movie-btn {
+		@apply border-solid border-2 border-green-400
+		flex justify-center items-center
+		w-fit h-fit
+		my-1
+	}
+
 }
 
 /* Profile Page */ 

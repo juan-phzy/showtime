@@ -1,3 +1,4 @@
+import { MoviesPageList } from "@/components/MoviesPageList";
 import { MovieGluFilm } from "@/utils/constants";
 
 
@@ -57,21 +58,7 @@ export default async function MoviesPage() {
 	
 	return (
 		<section className="movies-page-container">
-			{/**
-			 * 
-			 * The two data sets you need are: moviesNowShowing and moviesComingUp
-       * 
-			 * They are arrays of MovieGluFilm objects and they are already set up in this file
-			 * You can view the MovieGluFilm interface in the utils/constants.ts file
-			 * There is also an example of a MovieGluFilm object in the utils/constants.ts file
-       * 
-			 * All of your "HTML" goes within this home-page-container section
-       * The class name movies-page-container is already set up for you in the globals.css file
-			 * Add the rest of your classes under it
-			 * 
-			 */}
-
-			<div>This is the movies Page</div>
+			<MoviesPageList moviesNowShowing={moviesNowShowing} moviesComingUp={moviesComingUp} />
 		</section>
 	);
 }
