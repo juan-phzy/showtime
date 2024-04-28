@@ -1,7 +1,7 @@
 "use client"
 
 import { SubmitButton } from '../buttons/SubmitButton';
-
+import { useState, useEffect } from 'react';
 import { SignUpSearchParams, FormSubmitFunction } from "@/utils/constants";
 
 
@@ -13,9 +13,13 @@ interface SignUpFormProps {
 
 const SignUpStep1: React.FC<SignUpFormProps> = ({ formSubmit, searchParams, userData }) => {
 
+    const [uName, setUName] = useState(userData?.user_name || "");
+    const [phone, setPhone] = useState(userData?.phone_number || "");
+    const [showtime, setShowtime] = useState(userData?.showtime_preference || "morning");
+
     const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
       // Prevent non-numeric characters from being inputted
-      event.target.value = event.target.value.replace(/\D/g, '').slice(0, 10);
+      setPhone(event.target.value.replace(/\D/g, '').slice(0, 10));
     };
 
   
@@ -25,8 +29,9 @@ const SignUpStep1: React.FC<SignUpFormProps> = ({ formSubmit, searchParams, user
         Username
       </label>
       <input
-        value={userData?.user_name || ""}
+        value={uName}
         className="form-1-input"
+        onChange={(e) => setUName(e.target.value)}
         name="username"
         placeholder="JohnDoe12345"
         maxLength={20}
@@ -37,7 +42,7 @@ const SignUpStep1: React.FC<SignUpFormProps> = ({ formSubmit, searchParams, user
         Phone Number
       </label>
       <input
-        value={userData?.phone_number || ""}
+        value={phone}
         className="form-1-input"
         type="text"
         name="phone"
@@ -51,9 +56,10 @@ const SignUpStep1: React.FC<SignUpFormProps> = ({ formSubmit, searchParams, user
         Showtime Preference
       </label>
       <select 
-        value={userData?.showtime_preference || "morning"}
+        value={showtime}
         className="form-1-select"
         name="showtime"
+        onChange={(e) => setShowtime(e.target.value)}
         required>
         <option value="morning" className='text-black'>Morning</option>
         <option value="afternoon" className='text-black'>Afternoon</option>

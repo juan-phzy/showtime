@@ -3,11 +3,20 @@ import { headers } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { SubmitButton } from "@/components/buttons/SubmitButton";
-export default function Login({searchParams}: Readonly<{searchParams: { message: string; disabled: string }}>) 
-{
+export default async function Login({
+  searchParams,
+}: Readonly<{ searchParams: { message: string; disabled: string } }>) {
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (user) {
+    return redirect("/protected");
+  }
+
   const signUp = async (formData: FormData) => {
     "use server";
-    
+
     const origin = headers().get("origin");
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
@@ -25,7 +34,9 @@ export default function Login({searchParams}: Readonly<{searchParams: { message:
       return redirect(`/sign-up?message=${error.message}`);
     }
 
-    return redirect("/sign-up?message=Check email to continue sign in process&disabled=true");
+    return redirect(
+      "/sign-up?message=Check email to continue sign in process&disabled=true"
+    );
   };
 
   return (
@@ -71,9 +82,9 @@ export default function Login({searchParams}: Readonly<{searchParams: { message:
           placeholder="••••••••"
           required
         />
-        
+
         <SubmitButton
-        disabled={searchParams.disabled === "true"}
+          disabled={searchParams.disabled === "true"}
           formAction={signUp}
           className="border border-foreground/20 rounded-md px-4 py-2 text-foreground mb-2"
           pendingText="Signing Up..."

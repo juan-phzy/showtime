@@ -2,8 +2,17 @@ import Link from "next/link";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { SubmitButton } from "@/components/buttons/SubmitButton";
-export default function Login({searchParams}: Readonly<{searchParams: { message: string };}>) 
-{
+export default async function Login({
+  searchParams,
+}: Readonly<{ searchParams: { message: string } }>) {
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (user) {
+    return redirect("/protected");
+  }
+
   const signIn = async (formData: FormData) => {
     "use server";
 
@@ -22,8 +31,6 @@ export default function Login({searchParams}: Readonly<{searchParams: { message:
 
     return redirect("/protected");
   };
-
-  
 
   return (
     <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
@@ -75,7 +82,7 @@ export default function Login({searchParams}: Readonly<{searchParams: { message:
         >
           Sign In
         </SubmitButton>
-        
+
         {searchParams?.message && (
           <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
             {searchParams.message}

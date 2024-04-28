@@ -547,6 +547,8 @@
 		flex justify-center items-center
 		relative overflow-hidden
 		w-[50px] h-[60px]
+		md:w-[80px] md:h-[80px]
+		lg:w-[120px] lg:h-[120px]
 		rounded-full;
   }
   .recs-title {
@@ -564,6 +566,7 @@
 		w-full h-fit
 		relative
 		text-xl
+		md:text-2xl lg:text-3xl
 		p-2;
 		white-space: nowrap;
     	overflow: hidden;

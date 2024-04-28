@@ -96,8 +96,8 @@ export default function SignUpStep3({preferenceData}: Readonly<Props>) {
       return console.log(error.message);
     }
     if (data) {
-      return console.log("Successfully Updated Supabase Preferences");
-     // return router.replace("/protected");
+      console.log("Successfully Updated Supabase Preferences");
+      return router.replace("/protected");
     }
   };
 
