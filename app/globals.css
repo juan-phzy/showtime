@@ -46,24 +46,21 @@
 /* Welcome Page */
 @layer components {
   .welcome-page-container {
-    @apply 
-	/* border-solid border-4 border-blue-400 */
+    @apply /* border-solid border-4 border-blue-400 */
 		flex justify-center items-center
 		w-full h-full
 		p-5 sm:p-10 md:p-14
 		relative;
   }
   .welcome-page-content {
-    @apply 
-	/* border-dotted border-2 border-orange-400 */
+    @apply /* border-dotted border-2 border-orange-400 */
 		flex flex-col justify-center items-center
 		w-full h-full max-w-[1000px]
 		gap-4
 		relative;
   }
   .welcome-header-container {
-    @apply 
-	/* border-dotted border-2 border-purple-400 */
+    @apply /* border-dotted border-2 border-purple-400 */
 		flex flex-col justify-center items-center
 		w-full h-[70px]
 		p-5 gap-4
@@ -75,8 +72,7 @@
 		gap-2;
   }
   .welcome-image-container {
-    @apply 
-	/* border-dotted border-2 border-yellow-400 */
+    @apply /* border-dotted border-2 border-yellow-400 */
 		flex flex-col justify-center items-center
 		w-full h-[300px] max-w-[600px]
 		p-5 gap-4
@@ -86,8 +82,7 @@
     @apply text-2xl;
   }
   .welcome-btns-container {
-    @apply 
-	/* border-dotted border-2 border-red-400 */
+    @apply /* border-dotted border-2 border-red-400 */
 		flex flex-col justify-center items-center
 		w-full h-fit
 		gap-2
@@ -96,8 +91,7 @@
 		sm:flex-row sm:gap-4 sm:justify-between;
   }
   .welcome-btn {
-    @apply 
-	/* border-dotted border-2 border-green-400 */
+    @apply /* border-dotted border-2 border-green-400 */
 		flex justify-center items-center
 		w-full h-fit
 		gap-4
@@ -110,16 +104,14 @@
 /* Complete Sign Up */
 @layer components {
   .complete-signup-container {
-    @apply 
-	/* border-solid border-4 border-blue-400 */
+    @apply /* border-solid border-4 border-blue-400 */
 		flex justify-center items-center
 		w-full h-full
 		relative
 		px-5;
   }
   .complete-signup-content {
-    @apply 
-	/* border-solid border-4 border-orange-400 */
+    @apply /* border-solid border-4 border-orange-400 */
 		flex flex-col justify-start items-center
 		w-full h-full max-w-[1000px]
 		overflow-y-auto
@@ -127,8 +119,7 @@
 		gap-2;
   }
   .complete-signup-header {
-    @apply 
-	/* border-solid border-4 border-purple-400 */
+    @apply /* border-solid border-4 border-purple-400 */
 		flex justify-center items-center
 		w-full h-fit
 		text-2xl
@@ -138,8 +129,7 @@
 		md:text-4xl;
   }
   .complete-signup-form-container {
-    @apply 
-	/* border-solid border-4 border-yellow-400 */
+    @apply /* border-solid border-4 border-yellow-400 */
 		flex flex-col justify-center items-center
 		w-full h-full
 		relative;
@@ -180,23 +170,20 @@
 /* SignUpStep2 */
 @layer components {
   .signup-step2 {
-    @apply 
-	/* border-solid border-4 border-blue-400 */
+    @apply /* border-solid border-4 border-blue-400 */
 		flex flex-col justify-center items-center
 		w-full h-full
 		relative;
   }
   .signup-step2-content {
-    @apply 
-	/* border-solid border-4 border-orange-400 */
+    @apply /* border-solid border-4 border-orange-400 */
 		flex flex-col justify-center items-center
 		w-full h-full min-h-[400px] max-w-[600px]
 		relative
 		gap-2;
   }
   .theaterlist-container {
-    @apply 
-	/* border-solid border-4 border-purple-400 */
+    @apply /* border-solid border-4 border-purple-400 */
 		flex flex-col justify-between items-center
 		w-full h-fit
 		relative
@@ -205,8 +192,7 @@
 		md:flex-row md:gap-4;
   }
   .theaterlist-set {
-    @apply 
-	/* border-solid border-4 border-yellow-400 */
+    @apply /* border-solid border-4 border-yellow-400 */
 		flex flex-col justify-center items-center
 		w-fit h-fit
 		relative
@@ -276,8 +262,9 @@
   }
 
   .selected {
-    @apply border-solid border-2 border-red-400
-		bg-[#af8076];
+    @apply border-solid border-[1px] border-yellow-500
+		font-bold
+		bg-amber-500;
   }
 }
 
@@ -313,16 +300,14 @@
 /* Home Page */
 @layer components {
   .home-page-container {
-    @apply 
-	/* border-solid border-2 border-blue-400 */
+    @apply /* border-solid border-2 border-blue-400 */
 		flex justify-center items-center
 		w-full h-full
 		p-4
 		relative;
   }
   .home-page-content {
-    @apply 
-	/* border-solid border-2 border-red-500 */
+    @apply /* border-solid border-2 border-red-500 */
 		flex flex-col justify-center items-center
 		max-w-[1000px]
 		w-full h-full 
@@ -330,8 +315,7 @@
 		gap-4;
   }
   .home-page-header {
-    @apply 
-	/* border-solid border-green-400 border-2 */
+    @apply /* border-solid border-green-400 border-2 */
 		flex justify-center items-center
 		w-full h-fit
 		relative
@@ -347,8 +331,7 @@
 		md:flex md:justify-between md:items-center;
   }
   .home-page-body {
-    @apply 
-	/* border-solid border-green-600 border-2 */
+    @apply /* border-solid border-green-600 border-2 */
 		flex flex-col justify-start items-center
 		w-full h-full
 		overflow-y-auto
@@ -356,15 +339,13 @@
   }
 
   .home-page-movie-list-container {
-    @apply 
-	/* border-solid border-2 border-purple-400 */
+    @apply /* border-solid border-2 border-purple-400 */
 		flex flex-col justify-center items-center
 		w-full h-fit mt-2
 		relative;
   }
   .hp-mcu-title {
-    @apply 
-	border-solid border-b-[1px] border-red-400
+    @apply border-solid border-b-[1px] border-red-400
 		flex justify-between items-center
 		w-full h-fit
 		relative
@@ -395,8 +376,7 @@
 /* Movies Page */
 @layer components {
   .movies-page-container {
-    @apply 
-	/* border-dotted border-4 border-blue-400 */
+    @apply /* border-dotted border-4 border-blue-400 */
 		flex justify-center items-center
 		w-full h-full
 		relative
@@ -404,8 +384,7 @@
   }
 
   .movies-page-content {
-    @apply 
-		/* border-solid border-y-[1px] border-red-400 */
+    @apply /* border-solid border-y-[1px] border-red-400 */
 		flex flex-col justify-center items-center
 		w-full h-full max-w-[1000px]
 		relative
@@ -413,8 +392,7 @@
   }
 
   .movies-page-header {
-    @apply 
-	/* border-solid border-4 border-purple-400 */
+    @apply /* border-solid border-4 border-purple-400 */
 		flex justify-center items-center
 		w-full h-fit
 		relative
@@ -432,15 +410,13 @@
 		p-2;
   }
   .movies-page-selected {
-	@apply 
-	bg-red-400
+    @apply bg-red-400
 	font-semibold
 	text-black;
   }
 
   .movies-page-cards-container {
-    @apply 
-		border-solid border-t-[1px] border-red-400
+    @apply border-solid border-t-[1px] border-red-400
 		flex justify-evenly items-center flex-wrap
 		overflow-y-auto
 		w-full h-full
@@ -449,8 +425,7 @@
   }
 
   .movie-btn {
-    @apply 
-	/* border-solid border-2 border-green-400 */
+    @apply /* border-solid border-2 border-green-400 */
 		flex justify-center items-center
 		w-fit h-fit
 		my-1;
@@ -460,16 +435,14 @@
 /* Profile Page */
 @layer components {
   .profile-page-container {
-    @apply 
-	/* border-solid border-4 border-blue-400 */
+    @apply /* border-solid border-4 border-blue-400 */
 		flex flex-col justify-center items-center
 		w-full h-full
 		relative
 		p-2;
   }
   .profile-page-content {
-    @apply 
-	/* border-solid border-4 border-orange-400 */
+    @apply /* border-solid border-4 border-orange-400 */
 		flex flex-col justify-start items-center
 		w-full h-full max-w-[1000px]
 		overflow-y-auto
@@ -477,47 +450,119 @@
 		gap-4;
   }
   .profile-page-section {
-    @apply 
-	/* border-solid border-4 border-purple-400 */
+    @apply /* border-solid border-4 border-purple-400 */
 		flex flex-col justify-center items-center
 		w-full h-fit
 		relative
 		gap-1;
   }
   .profile-title {
-    @apply 
-	border-solid border-b-4 border-yellow-400
+    @apply border-solid border-b-4 border-yellow-400
 		flex justify-start items-center
 		w-full h-fit
 		relative
 		text-2xl;
   }
   .profile-section-content {
-    @apply 
-	/* border-solid border-4 border-green-400 */
+    @apply /* border-solid border-4 border-green-400 */
 		flex flex-col justify-center items-start
 		w-full h-fit
 		relative
 		gap-1;
   }
   .profile-subtitle {
-    @apply 
-	/* border-solid border-4 border-blue-400 */
+    @apply /* border-solid border-4 border-blue-400 */
 		flex justify-start items-center
 		w-full h-fit
 		relative
 		text-lg;
   }
   .profile-list {
-    @apply 
-	/* border-solid border-white border-2 */
+    @apply /* border-solid border-white border-2 */
 		flex justify-start items-center flex-wrap
 		w-full h-fit max-h-[100px]
 		gap-2;
   }
   .profile-list-item {
-    @apply 
-	border-solid border-2 border-red-400
+    @apply border-solid border-2 border-red-400
+		flex justify-center items-center
+		w-fit h-fit
+		shrink-0
+		rounded-lg
+		relative
+		text-center
+		text-[.6rem]
+		p-1;
+  }
+}
+
+/* Recommendations Page */
+@layer components {
+  .recs-page-container {
+    @apply border-solid border-4 border-blue-400
+		flex justify-center items-center
+		w-full h-full
+		relative
+		p-2;
+  }
+  .recs-page-content {
+    @apply border-solid border-4 border-orange-400
+		flex flex-col justify-start items-center
+		w-full h-full max-w-[1000px]
+		relative
+		gap-4;
+  }
+  .recs-page-header {
+    @apply border-solid border-4 border-purple-400
+		flex justify-center items-center
+		w-full h-fit
+		relative
+		text-2xl
+		py-2;
+  }
+  .recs-page-body {
+    @apply border-solid border-white border-4
+	flex flex-col justify-center items-center
+		w-full h-full
+		relative;
+  }
+
+  .recs-page-section {
+    @apply /* border-solid border-4 border-purple-400 */
+		flex flex-col justify-center items-center
+		w-full h-fit
+		relative
+		gap-1;
+  }
+  .recs-title {
+    @apply border-solid border-b-4 border-yellow-400
+		flex justify-start items-center
+		w-full h-fit
+		relative
+		text-2xl;
+  }
+  .recs-section-content {
+    @apply /* border-solid border-4 border-green-400 */
+		flex flex-col justify-center items-start
+		w-full h-fit
+		relative
+		gap-1;
+  }
+  .recs-subtitle {
+    @apply /* border-solid border-4 border-blue-400 */
+		flex justify-start items-center
+		w-full h-fit
+		relative
+		text-lg;
+  }
+  .recs-list {
+    @apply /* border-solid border-white border-2 */
+		flex justify-start items-center flex-wrap
+		w-full h-fit max-h-[100px]
+		gap-2;
+  }
+  .recs-list-item {
+    @apply border-solid border-2 border-red-400
 		flex justify-center items-center
 		w-fit h-fit
 		shrink-0
@@ -531,33 +576,33 @@
 
 /* Horizontal Scroll */
 @layer components {
-	.scroll-x-only {
-	overflow-x: auto;
-	}
-	.scroll-y-only {
-	overflow-y: auto;
-	}
+  .scroll-x-only {
+    overflow-x: auto;
+  }
+  .scroll-y-only {
+    overflow-y: auto;
+  }
 
-	/* Styles for the scrollbar */
-	.scroll-x-only::-webkit-scrollbar {
-		height: 4px;
-	}
-	.scroll-y-only::-webkit-scrollbar {
-		width: 10px;
-	}
+  /* Styles for the scrollbar */
+  .scroll-x-only::-webkit-scrollbar {
+    height: 4px;
+  }
+  .scroll-y-only::-webkit-scrollbar {
+    width: 10px;
+  }
 
-	.scroll-y-only::-webkit-scrollbar-track, 
-	.scroll-x-only::-webkit-scrollbar-track {
-	background: #f1f1f1;
-	}
+  .scroll-y-only::-webkit-scrollbar-track,
+  .scroll-x-only::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
 
-	.scroll-y-only::-webkit-scrollbar-thumb,
-	.scroll-x-only::-webkit-scrollbar-thumb {
-	background: #888;
-	}
+  .scroll-y-only::-webkit-scrollbar-thumb,
+  .scroll-x-only::-webkit-scrollbar-thumb {
+    background: #888;
+  }
 
-	.scroll-y-only::-webkit-scrollbar-thumb:hover,
-	.scroll-x-only::-webkit-scrollbar-thumb:hover {
-	background: #555;
-	}
+  .scroll-y-only::-webkit-scrollbar-thumb:hover,
+  .scroll-x-only::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 }

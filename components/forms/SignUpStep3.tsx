@@ -5,6 +5,7 @@ import { createClient } from "@/utils/supabase/client";
 import { GENRES } from "@/utils/constants";
 import PreferenceCard from "../cards/PreferenceCard";
 import { useRouter } from "next/navigation";
+import { createRecommendations, filterPreferences } from "@/utils/utilityFuncs";
 
 //------------------------------------------------------------Function to fetch data from the API
 async function getChoiceLists() {
@@ -15,35 +16,16 @@ async function getChoiceLists() {
   return res.json();
 }
 
-async function awsAPI() {
-  try {
-    const apiEndpoint = 'https://qh8in503e6.execute-api.us-east-2.amazonaws.com/RecommendMovies';
-    const response = await fetch(apiEndpoint, {
-      method: 'GET', // Make sure this matches the method expected by the API Gateway
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const recommendedMovies = await response.json();
-
-    console.log("AWS API RESPONSE: ",recommendedMovies);
-  } catch (error) {
-    console.log(error);
-    console.error('There was an error!', error);
-  }
-}
-
 interface Props {
 	preferenceData: any;
 }
 
 //------------------------------------------------------------Component Starts Here
 export default function SignUpStep3({preferenceData}: Readonly<Props>) {
-  const [actors, setActors] = useState<string[]>([]);
-  const [directors, setDirectors] = useState<string[]>([]);
-  const [distributors, setDistributors] = useState<string[]>([]);
+  
+  const [actors, setActors] = useState<[string,string[]][]>([]);
+  const [directors, setDirectors] = useState<[string,string[]][]>([]);
+  const [distributors, setDistributors] = useState<[string,string[]][]>([]);
   const genres = GENRES.map((genre) => genre.name);
 
   const [selectedActors, setSelectedActors] = useState<string[]>(preferenceData?.fav_actors || []);
@@ -58,6 +40,7 @@ export default function SignUpStep3({preferenceData}: Readonly<Props>) {
   useEffect(() => {
     getChoiceLists()
       .then((data) => {
+        console.log(data);
         setActors(data.lists.actors);
         setDirectors(data.lists.directors);
         setDistributors(data.lists.distributors);
@@ -80,6 +63,12 @@ export default function SignUpStep3({preferenceData}: Readonly<Props>) {
       return console.log("No user found");
     }
 
+
+    console.log("SA: ",selectedActors);
+    console.log("SD: ",selectedDirectors);
+    console.log("SDI: ",selectedDistributors);
+    console.log("SG: ",selectedGenres);
+
     const { data, error } = await supabase
     .from("preferences")
     .upsert([
@@ -92,13 +81,23 @@ export default function SignUpStep3({preferenceData}: Readonly<Props>) {
       },
     ])
     .select();
+
     
+    const filteredActors = filterPreferences(actors, selectedActors);
+    const filteredDirectors = filterPreferences(directors, selectedDirectors);
+    const filteredDistributors = filterPreferences(distributors, selectedDistributors);
+
+
+    
+    createRecommendations(supabase, filteredActors, filteredDirectors, filteredDistributors, selectedGenres, user?.id);
+
 
     if (error) {
       return console.log(error.message);
     }
     if (data) {
-      return router.replace("/protected");
+      return console.log("Successfully Updated Supabase Preferences");
+     // return router.replace("/protected");
     }
   };
 
@@ -149,15 +148,15 @@ export default function SignUpStep3({preferenceData}: Readonly<Props>) {
           {directors.map((director) => {
             return (
               <button
-                key={director}
+                key={director[0]}
                 onClick={() => {
-                  handleDirectorClick(director);
+                  handleDirectorClick(director[0]);
                 }}
               >
                 <PreferenceCard
                   isName={true}
-                  text={director}
-                  selected={selectedDirectors.includes(director)}
+                  text={director[0]}
+                  selected={selectedDirectors.includes(director[0])}
                 />
               </button>
             );
@@ -165,19 +164,19 @@ export default function SignUpStep3({preferenceData}: Readonly<Props>) {
         </div>
         <div className="signup-step3-title">Actors:</div>
         <div className="signup-step3-cards-container scroll-x-only mb-2">
-          {actors.map((actor) => {
+          {actors.map((actor, index) => {
             return (
               <button
-                key={actor}
+                key={actor[0]}
                 onClick={() => {
-                  handleActorClick(actor);
+                  handleActorClick(actor[0]);
                 }}
               >
                 <PreferenceCard
                   isName={true}
-                  text={actor}
-                  selected={selectedActors.includes(actor)}
-                />
+                  text={actor[0]}
+                  selected={selectedActors.includes(actor[0])}
+              />
               </button>
             );
           })}
@@ -206,15 +205,15 @@ export default function SignUpStep3({preferenceData}: Readonly<Props>) {
           {distributors.map((distributor) => {
             return (
               <button
-                key={distributor}
+                key={distributor[0]}
                 onClick={() => {
-                  handleDistributorClick(distributor);
+                  handleDistributorClick(distributor[0]);
                 }}
               >
                 <PreferenceCard
                   isName={false}
-                  text={distributor}
-                  selected={selectedDistributors.includes(distributor)}
+                  text={distributor[0]}
+                  selected={selectedDistributors.includes(distributor[0])}
                 />
               </button>
             );

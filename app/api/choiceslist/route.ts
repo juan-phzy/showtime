@@ -1,4 +1,4 @@
-import { removeDuplicatesUsingFilter } from "@/utils/utilityFuncs";
+import { filterArrays } from "@/utils/utilityFuncs";
 
 export async function GET() {
 
@@ -12,12 +12,12 @@ export async function GET() {
 
 	const res = await fetch(`${API_URL}/filmsNowShowing/?n=10`, {
 		headers: {
-			"client":CLIENT ? CLIENT : "",
-			"x-api-key":API_KEY ? API_KEY : "",
-			"authorization":AUTH ? AUTH : "",
-			"territory":TERRITORY ? TERRITORY : "",
-			"api-version":API_VERSION ? API_VERSION : "",
-			"geolocation":GEOLOC ? GEOLOC : "",
+			"client": CLIENT ?? "",
+			"x-api-key": API_KEY ?? "",
+			"authorization": AUTH ?? "",
+			"territory": TERRITORY ?? "",
+			"api-version": API_VERSION ?? "",
+			"geolocation": GEOLOC ?? "",
 			"device-datetime": new Date().toISOString(),
 		},
 	});
@@ -28,36 +28,40 @@ export async function GET() {
 
 	const filmDetailList = await Promise.all(films.map(async (film:any) => {
 		const filmDetailRes = await fetch(`${API_URL}/filmDetails/?film_id=${film[0]}`, {
-				headers: {
-						"client": CLIENT ? CLIENT : "",
-						"x-api-key": API_KEY ? API_KEY : "",
-						"authorization": AUTH ? AUTH : "",
-						"territory": TERRITORY ? TERRITORY : "",
-						"api-version": API_VERSION ? API_VERSION : "",
-						"geolocation": GEOLOC ? GEOLOC : "",
-						"device-datetime": new Date().toISOString(),
-				},
+			headers: {
+				"client": CLIENT ?? "",
+				"x-api-key": API_KEY ?? "",
+				"authorization": AUTH ?? "",
+				"territory": TERRITORY ?? "",
+				"api-version": API_VERSION ?? "",
+				"geolocation": GEOLOC ?? "",
+				"device-datetime": new Date().toISOString(),
+			},
 		});
 		const filmDetail = await filmDetailRes.json();
 		return {
+				film_id: parseInt(filmDetail.film_id),
 				distributor: filmDetail.distributor,
-				actors: filmDetail.cast.map((actor:any) => actor.cast_name),
-				directors: filmDetail.directors.map((director:any) => director.director_name),
+				actors: filmDetail.cast.map((actor:any) => [actor.cast_name, [parseInt(filmDetail.film_id)]]),
+				directors: filmDetail.directors.map((director:any) => [director.director_name, [parseInt(filmDetail.film_id)]]),
 		};
 	}));
 
-	//console.log("\n\nFilm Detail List: ",filmDetailList,"\n\n")
+	//console.log("\n\nFilm Detail List: ",filmDetailList[0],"\n\n")
 
-	const dis:string[] = filmDetailList.map((film:any) => {return film.distributor});
-	const uniqueDis = removeDuplicatesUsingFilter(dis);
+	const dis:[string | null,number[]][] = filmDetailList.map((film:any) => {return [film.distributor, [parseInt(film.film_id)]]});
+	const uniqueDis = filterArrays(dis);
+	//console.log("\n\nUnique Distributors: ",uniqueDis,"\n\n");
 
-	const arrayOfActorArrays:string[] = filmDetailList.map((film:any) => {return film.actors});
-	const flattenedActorArray = arrayOfActorArrays.flat();
-	const uniqueActors = removeDuplicatesUsingFilter(flattenedActorArray);
+	const arrayOfActorArrays = filmDetailList.map((film:any) => {return film.actors});
+	const flattenedActorArray:[string | null,number[]][] = arrayOfActorArrays.flat();	
+	const uniqueActors = filterArrays(flattenedActorArray);
+	//console.log("\n\nUnique Actors: ",uniqueActors,"\n\n");
 
-	const arrayOfDirectorArrays:string[] = filmDetailList.map((film:any) => {return film.directors});
-	const flattenedDirectorArray = arrayOfDirectorArrays.flat();
-	const uniqueDirectors = removeDuplicatesUsingFilter(flattenedDirectorArray);
+	const arrayOfDirectorArrays = filmDetailList.map((film:any) => {return film.directors});
+	const flattenedDirectorArray:[string | null,number[]][] = arrayOfDirectorArrays.flat();	
+	const uniqueDirectors = filterArrays(flattenedDirectorArray);
+	//console.log("\n\nUnique Directors: ",uniqueDirectors,"\n\n");
 
 	const lists = {
 		actors: uniqueActors,

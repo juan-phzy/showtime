@@ -1,3 +1,4 @@
+import { fromJSON } from "postcss";
 import { FaUserAlt, FaBell, FaFilm, FaHome  } from "react-icons/fa";
 
 
@@ -251,4 +252,100 @@ export interface MovieTheater {
   lng: number;
   distance: number;
   logo_url: string;
+}
+
+export type MovieSource = {
+  id: string;
+  fromActor: boolean;
+  fromDirector: boolean;
+  fromDistributor: boolean;
+};
+
+
+
+
+
+
+export interface Cinema {
+  cinema_id: number;
+  cinema_name: string;
+}
+
+
+export interface FilmImageDetails {
+  film_image: string;
+  width: number;
+  height: number;
+}
+
+export interface FilmImages {
+  poster: { [key: string]: { image_orientation: string; region: string; medium: FilmImageDetails } };
+  still: { [key: string]: { image_orientation: string; medium: FilmImageDetails } };
+}
+
+export interface ShowingTime {
+  start_time: string;
+  end_time: string;
+}
+
+export interface Showings {
+  [version_type: string]: {
+    film_id: number;
+    film_name: string;
+    times: ShowingTime[];
+  };
+}
+
+export interface ShowDate {
+  date: string;
+}
+
+export interface Film {
+  film_id: number;
+  imdb_id: number;
+  imdb_title_id: string;
+  film_name: string;
+  other_titles: string | null;
+  version_type: string;
+  age_rating: AgeRating[];
+  images: FilmImages;
+  showings: Showings;
+  show_dates: ShowDate[];
+}
+
+export interface Status {
+  count: number;
+  state: string;
+  method: string;
+  message: string | null;
+  request_method: string;
+  version: string;
+  territory: string;
+  device_datetime_sent: string;
+  device_datetime_used: string;
+}
+
+export interface CinemaShowtimesResponse {
+  cinema: Cinema;
+  films: Film[];
+  status: Status;
+}
+
+export interface MergedData {
+  film_id: number;
+  imdb_id: number;
+  imdb_title_id: string;
+  film_name: string;
+  other_titles: string | null;
+  version_type: string;
+  age_rating: AgeRating[];
+  images: FilmImages;
+  showings: Showings;
+  show_dates: ShowDate[];
+  cinema_id: number;
+  cinema_name: string;
+  id: string;
+  fromActor: boolean;
+  fromDirector: boolean;
+  fromDistributor: boolean;
 }
