@@ -17,18 +17,18 @@ export const MovieList = ({moviesNowShowing,moviesComingUp}: Props) => {
         <section className = "movies-page-container">
             <div className = "movies-pages-content">
                 <div className = "movies-page-header mb-4">
-                    <button className={`flex justify-center items-center w-fit h-fit border-solid border-white border-2 ${nowPlaying && "bg-gray-500"}`}
+                    <button className={`movie-page-buttons  ${nowPlaying && "bg-[#F47A62] text-black font-bold"}`}
                     onClick={() =>   
                     setNowPlaying(true)}>
                         Now Playing
                     </button>
                     <button
-                    className={`flex justify-center items-center w-fit h-fit border-solid border-white border-2 ${!nowPlaying && "bg-gray-500"}`}
+                    className={`movie-page-buttons ${!nowPlaying && "bg-[#F47A62] text-black font-bold"}`}
                     onClick={() => setNowPlaying(false)}>
                         Coming Soon
                     </button>
                 </div>
-                <div className = "movie-card-container w-full flex flex-wrap"> 
+                <div className = "movie-card-container "> 
                     { (nowPlaying? moviesNowShowing: moviesComingUp).map(
                         
                         (movie:MovieGluFilm, index) => { return ( 
