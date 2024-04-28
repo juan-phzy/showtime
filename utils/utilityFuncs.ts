@@ -1,4 +1,4 @@
-import { MovieGluFilm, MovieSource, CinemaShowtimesResponse, MergedData } from "./constants";
+import { MovieGluFilm, MovieSource, CinemaShowtimesResponse, MergedData, ShowingTime } from "./constants";
 
 export function getHeaderText(step: string): string{
     switch (step) {
@@ -229,4 +229,27 @@ export function getDate(daysAhead: number) {
   const day = newDate.getDate().toString().padStart(2, '0');
 
   return `${year}-${month}-${day}`;
+}
+
+export function filterShowtimes(showtimes: ShowingTime[], period: string): ShowingTime[] {
+  // Helper function to convert time string to numeric hour value
+  function timeToHour(timeStr: string): number {
+      const [hour, minute] = timeStr.split(':').map(Number);
+      return hour + minute / 60;
+  }
+
+  return showtimes.filter(showtime => {
+      const startHour = timeToHour(showtime.start_time);
+
+      switch (period) {
+          case 'morning':
+              return startHour < 12;
+          case 'afternoon':
+              return startHour >= 12 && startHour < 18;
+          case 'evening':
+              return startHour >= 18;
+          default:
+              throw new Error("Invalid period specified. Use 'morning', 'afternoon', or 'evening'.");
+      }
+  });
 }

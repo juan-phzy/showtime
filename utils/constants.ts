@@ -308,7 +308,7 @@ export interface Film {
   other_titles: string | null;
   version_type: string;
   age_rating: AgeRating[];
-  images: FilmImages;
+  images: Images;
   showings: Showings;
   show_dates: ShowDate[];
 }
@@ -339,7 +339,7 @@ export interface MergedData {
   other_titles: string | null;
   version_type: string;
   age_rating: AgeRating[];
-  images: FilmImages;
+  images: Images;
   showings: Showings;
   show_dates: ShowDate[];
   cinema_id: number;

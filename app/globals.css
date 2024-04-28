@@ -477,13 +477,13 @@
 		relative
 		text-lg;
   }
-  .profile-list {
+  .profile-list, .rec-list {
     @apply /* border-solid border-white border-2 */
 		flex justify-start items-center flex-wrap
 		w-full h-fit max-h-[100px]
 		gap-2;
   }
-  .profile-list-item {
+  .profile-list-item, .rec-list-item {
     @apply border-solid border-2 border-red-400
 		flex justify-center items-center
 		w-fit h-fit
@@ -499,48 +499,77 @@
 /* Recommendations Page */
 @layer components {
   .recs-page-container {
-    @apply border-solid border-4 border-blue-400
+    @apply 
+	/* border-solid border-4 border-blue-400 */
 		flex justify-center items-center
 		w-full h-full
 		relative
 		p-2;
   }
   .recs-page-content {
-    @apply border-solid border-4 border-orange-400
+    @apply 
+	/* border-solid border-4 border-orange-400 */
 		flex flex-col justify-start items-center
 		w-full h-full max-w-[1000px]
 		relative
 		gap-4;
   }
   .recs-page-header {
-    @apply border-solid border-4 border-purple-400
+    @apply 
+		border-solid border-b-2 border-white
 		flex justify-center items-center
 		w-full h-fit
 		relative
 		text-2xl
+		text-center
 		py-2;
   }
   .recs-page-body {
-    @apply border-solid border-white border-4
-	flex flex-col justify-center items-center
-		w-full h-full
-		relative;
+    @apply 
+	/* border-solid border-white border-4 */
+	flex flex-col justify-start items-center
+	overflow-y-auto
+	w-full h-full
+	relative;
   }
 
   .recs-page-section {
-    @apply /* border-solid border-4 border-purple-400 */
+    @apply 
+	/* border-solid border-4 border-purple-400 */
 		flex flex-col justify-center items-center
 		w-full h-fit
 		relative
-		gap-1;
+		gap-2;
+  }
+  .recs-image {
+	@apply 
+		/* border-solid bor border-yellow-400 */
+		flex justify-center items-center
+		relative overflow-hidden
+		w-[50px] h-[60px]
+		rounded-full;
   }
   .recs-title {
-    @apply border-solid border-b-4 border-yellow-400
-		flex justify-start items-center
+    @apply 
+	/* border-solid border-b-4 border-yellow-400 */
+		flex justify-start items-center gap-4
+		w-full h-fit
+		shrink-0
+		relative
+		text-lg
+		p-2;
+  }
+  .recs-title-text {
+    @apply border-solid border-b-2 border-red-400
 		w-full h-fit
 		relative
-		text-2xl;
+		text-xl
+		p-2;
+		white-space: nowrap;
+    	overflow: hidden;
+    	text-overflow: ellipsis;
   }
+
   .recs-section-content {
     @apply /* border-solid border-4 border-green-400 */
 		flex flex-col justify-center items-start
