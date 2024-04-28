@@ -92,21 +92,13 @@ export default function SignUpStep3({preferenceData}: Readonly<Props>) {
       },
     ])
     .select();
-
-    awsAPI().then((data) => {
-      console.log(data);
-    }
-    ).catch((error) => {
-      console.log(error);
-    });
     
 
     if (error) {
       return console.log(error.message);
     }
     if (data) {
-      return console.log("Successfully Updated Supabase Preferences");
-     // return router.replace("/protected");
+      return router.replace("/protected");
     }
   };
 
