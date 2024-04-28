@@ -253,3 +253,52 @@ export function filterShowtimes(showtimes: ShowingTime[], period: string): Showi
       }
   });
 }
+
+
+async function getMovieGluDetail(filmID: string) {
+  try {
+    const res = await fetch(`${API_URL}/filmDetails/?film_id=${filmID}`, {
+      method: "GET",
+      headers: {
+        "client": CLIENT ?? "",
+        "x-api-key": API_KEY ?? "",
+        "authorization": AUTH ?? "",
+        "territory": TERRITORY ?? "",
+        "api-version": API_VERSION ?? "",
+        "geolocation": GEOLOC ?? "",
+        "device-datetime": new Date().toISOString(),
+      },
+    });
+
+    if (!res.ok) {
+      // If the response is not ok, then throw an error with the status
+      throw new Error(`API call failed with status: ${res.status} and status text: ${res.statusText}`);
+    }
+
+    // Read the text of the response
+    const text = await res.text();
+    // console.log("Response text:", text);
+
+    // Now attempt to parse the text as JSON
+    const data = JSON.parse(text); // This might throw if the text is not valid JSON
+    // console.log("Data received from getFilmDetails:", data);
+    return data;
+  } catch (error) {
+    // Log the error to the console for debugging
+    console.error("Error in getFilmDetails:", error);
+    // You may decide to rethrow the error or handle it in some way
+    // For example, return null or a default object
+    return null;
+  }
+}
+export async function getRecMovieGluFilms(recommendedMovieIds: string[]) {
+
+  const recMovies:MovieGluFilm[] = await Promise.all(recommendedMovieIds.map(async (movieId) => {
+    const data = await getMovieGluDetail(movieId);
+    return data;
+  }));
+
+
+  return recMovies;
+
+}

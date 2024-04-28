@@ -1,6 +1,7 @@
 import HomeMovieList from "@/components/HomeMovieList";
-import { MovieGluFilm } from "@/utils/constants";
+import { MovieGluFilm, MovieSource } from "@/utils/constants";
 import { createClient } from "@/utils/supabase/server";
+import { getRecMovieGluFilms } from "@/utils/utilityFuncs";
 
 //vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  DO NOT MODIFY  vvvvvvvvvv
 const API_URL = process.env.MOVIEGULU_API_ENDPOINT;
@@ -74,6 +75,22 @@ export default async function HomePage() {
   const {
     data: { films: moviesComingUp },
   }: { data: { films: MovieGluFilm[] } } = await res2.json();
+
+  const { data: preferences, error: err1 } = await supabase
+  .from("preferences")
+  .select("recommendedMovies");
+if (err1) {
+  console.log(err1);
+}
+if (!preferences) {
+  return <div>Issue Loading Recommended Movies, Check Development</div>;
+}
+
+const recommendedMovieIds = JSON.parse(preferences[0].recommendedMovies);
+const recIds = recommendedMovieIds.map((movie: MovieSource) => movie.id);
+
+const recommendedMovies = await getRecMovieGluFilms(recIds);
+
   //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  DO NOT MODIFY  ^^^^^^^^^^^^
 
   return (
@@ -97,7 +114,7 @@ export default async function HomePage() {
           </div>
             
           <div className="home-page-movie-list-container">
-            <HomeMovieList title="Recommendations" movies={[]} />
+            <HomeMovieList title="Recommendations" movies={recommendedMovies} />
           </div>
           
         </div>

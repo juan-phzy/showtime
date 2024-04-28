@@ -25,7 +25,7 @@ export default async function RecommendationsPage() {
     console.log(err1);
   }
   if (!preferences) {
-    return <div>Issue Loading Preferences, Check Development</div>;
+    return <div>Issue Loading Recommended Movies, Check Development</div>;
   }
 
   const { data: theaterID, error: err2 } = await supabase
