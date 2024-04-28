@@ -15,6 +15,26 @@ async function getChoiceLists() {
   return res.json();
 }
 
+async function awsAPI() {
+  try {
+    const apiEndpoint = 'https://qh8in503e6.execute-api.us-east-2.amazonaws.com/RecommendMovies';
+    const response = await fetch(apiEndpoint, {
+      method: 'GET', // Make sure this matches the method expected by the API Gateway
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const recommendedMovies = await response.json();
+
+    console.log("AWS API RESPONSE: ",recommendedMovies);
+  } catch (error) {
+    console.log(error);
+    console.error('There was an error!', error);
+  }
+}
+
 interface Props {
 	preferenceData: any;
 }
@@ -73,23 +93,13 @@ export default function SignUpStep3({preferenceData}: Readonly<Props>) {
     ])
     .select();
 
-
-    try {
-      const apiEndpoint = 'https://qh8in503e6.execute-api.us-east-2.amazonaws.com/RecommendMovies';
-      const response = await fetch(apiEndpoint, {
-        method: 'GET', // Make sure this matches the method expected by the API Gateway
-      });
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-  
-      const recommendedMovies = await response.json();
-
-      console.log("AWS API RESPONSE: ",recommendedMovies);
-    } catch (error) {
-      console.error('There was an error!', error);
+    awsAPI().then((data) => {
+      console.log(data);
     }
+    ).catch((error) => {
+      console.log(error);
+    });
+    
 
     if (error) {
       return console.log(error.message);
