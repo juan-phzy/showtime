@@ -46,7 +46,7 @@ async function getMoviesComingUp() {
 
 
 
-export default async function MoviesPage() {
+export default async function MoviesPage({searchParams}: {readonly searchParams: {readonly choice: string}}) {
 
 	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  DO NOT MODIFY  vvvvvvvvvv
 	const res1 = await getMoviesNowShowing();
@@ -58,7 +58,7 @@ export default async function MoviesPage() {
 	
 	return (
 		<section className="movies-page-container">
-			<MoviesPageList moviesNowShowing={moviesNowShowing} moviesComingUp={moviesComingUp} />
+			<MoviesPageList search={searchParams} moviesNowShowing={moviesNowShowing} moviesComingUp={moviesComingUp} />
 		</section>
 	);
 }

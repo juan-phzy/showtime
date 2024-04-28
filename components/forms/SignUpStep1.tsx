@@ -1,4 +1,5 @@
-import React from 'react';
+"use client"
+
 import { SubmitButton } from '../buttons/SubmitButton';
 
 import { SignUpSearchParams, FormSubmitFunction } from "@/utils/constants";
@@ -7,45 +8,61 @@ import { SignUpSearchParams, FormSubmitFunction } from "@/utils/constants";
 interface SignUpFormProps {
     formSubmit: FormSubmitFunction;
     searchParams: SignUpSearchParams;
+    userData: any;
   }
 
-const SignUpStep1: React.FC<SignUpFormProps> = ({ formSubmit, searchParams }) => {
+const SignUpStep1: React.FC<SignUpFormProps> = ({ formSubmit, searchParams, userData }) => {
+
+    const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+      // Prevent non-numeric characters from being inputted
+      event.target.value = event.target.value.replace(/\D/g, '').slice(0, 10);
+    };
+
+  
   return (
     <form className="form-1">
-      <label className="text-md" htmlFor="username">
+      <label className="form-1-label" htmlFor="username">
         Username
       </label>
       <input
-        className="rounded-md px-4 py-2 bg-inherit border"
+        value={userData?.user_name || ""}
+        className="form-1-input"
         name="username"
         placeholder="JohnDoe12345"
+        maxLength={20}
+        minLength={5}
         required
       />
-      <label className="text-md" htmlFor="phone">
+      <label className="form-1-label" htmlFor="phone">
         Phone Number
       </label>
       <input
-        className="rounded-md px-4 py-2 bg-inherit border"
+        value={userData?.phone_number || ""}
+        className="form-1-input"
         type="text"
         name="phone"
         placeholder="1234445566"
+        onInput={handleInput}
+        pattern="\d{10}"
+        title="Phone number must be 10 digits"
         required
       />
-      <label className="text-md" htmlFor="showtime">
+      <label className="form-1-label" htmlFor="showtime">
         Showtime Preference
       </label>
       <select 
-        className="rounded-md px-4 py-2 bg-inherit border"
+        value={userData?.showtime_preference || "morning"}
+        className="form-1-select"
         name="showtime"
         required>
-        <option value="morning">Morning</option>
-        <option value="afternoon">Afternoon</option>
-        <option value="evening">Evening</option>
+        <option value="morning" className='text-black'>Morning</option>
+        <option value="afternoon" className='text-black'>Afternoon</option>
+        <option value="evening" className='text-black'>Evening</option>
       </select>
       
       <SubmitButton
         formAction={formSubmit}
-        className="border border-foreground/20 rounded-md px-4 py-2 text-foreground"
+        className="form-1-submit-btn"
         pendingText="Signing Up..."
       >
         Continue

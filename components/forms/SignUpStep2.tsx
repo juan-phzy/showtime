@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 interface SignUpFormProps {
 	uid: string;
 	searchParams: SignUpSearchParams;
+	userData: any;
 }
 
 async function getTheaters() {
@@ -19,8 +20,8 @@ async function getTheaters() {
 	return res.json()
 }
 
-export default function SignUpStep2({ uid, searchParams }: Readonly<SignUpFormProps>){
-	const [selectedTheater, setSelectedTheater] = useState<string | null>(null);
+export default function SignUpStep2({ uid, searchParams, userData }: Readonly<SignUpFormProps>){
+	const [selectedTheater, setSelectedTheater] = useState<string | null>(userData?.favoriteTheater || null);
 	const [cinemas1, setCinemas1] = useState<CinemaData[]>([]);
 	const [cinemas2, setCinemas2] = useState<CinemaData[]>([]);
 	const router = useRouter();
@@ -61,6 +62,7 @@ export default function SignUpStep2({ uid, searchParams }: Readonly<SignUpFormPr
     <section className='signup-step2'>
 			<div className='signup-step2-content'>
 				<div className="theaterlist-container">
+					{cinemas1.length === 0 && (	<div className="flex justify-center items-center w-full h-full text-3xl">Loading...</div>)}
 					<div className="theaterlist-set">	
 						{cinemas1.length > 0 && (cinemas1.map((cinema:CinemaData) =>
 							{
@@ -106,7 +108,7 @@ export default function SignUpStep2({ uid, searchParams }: Readonly<SignUpFormPr
 						}
 					</div>
 				</div>
-				<button onClick={submitTheater} className='w-[200px] h-fit p-1 bg-[#F47A62] text-white rounded-md'>Submit</button>
+				<button type="button" onClick={submitTheater} className={`w-[300px] h-fit p-3 bg-red-400 text-white rounded-md mt-4 ${cinemas1.length===0 && 'hidden'}`}>Submit</button>
 				<div className="flex justify-center items-center w-fit h-fit p-1 text-sm">
 					{searchParams?.error && (
 					<p className="p-4 bg-red-500 text-white text-center">

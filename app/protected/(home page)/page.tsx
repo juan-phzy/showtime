@@ -87,7 +87,7 @@ export default async function HomePage() {
           </span>
         </div>
 
-        <div className="home-page-body">
+        <div className="home-page-body scroll-y-only">
           <div className="home-page-movie-list-container">
             <HomeMovieList title="Now Showing" movies={moviesNowShowing} />
           </div>

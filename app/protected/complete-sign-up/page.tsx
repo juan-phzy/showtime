@@ -16,6 +16,11 @@ export default async function CompleteSignUpPage ({searchParams}: Readonly<{sear
 	if (!user) {
 		return redirect("/");
 	}
+  const {data:pData} = await supabase.from('preferences').select().eq('auth_id', user.id);
+  const preferenceData = pData ? pData[0] : null;
+
+  const {data:uData} = await supabase.from('generalUsers').select().eq('auth_id', user.id);
+  const userData = uData ? uData[0] : null;
 
   const submitUserInfo: FormSubmitFunction = async (formData: FormData) => {
     "use server";
@@ -52,9 +57,9 @@ export default async function CompleteSignUpPage ({searchParams}: Readonly<{sear
       <div className="complete-signup-content">
         <div className="complete-signup-header">{headerText}</div>
         <div className="complete-signup-form-container">
-          {searchParams.step === "1" && (<SignUpStep1 formSubmit={submitUserInfo} searchParams={searchParams} />)}
-          {searchParams.step === "2" && (<SignUpStep2 uid={user.id} searchParams={searchParams} />)}
-          {searchParams.step === "3" && (<SignUpStep3 />)}
+          {searchParams.step === "1" && (<SignUpStep1 userData={userData} formSubmit={submitUserInfo} searchParams={searchParams} />)}
+          {searchParams.step === "2" && (<SignUpStep2 userData={userData} uid={user.id} searchParams={searchParams} />)}
+          {searchParams.step === "3" && (<SignUpStep3 preferenceData={preferenceData} />)}
         </div>
       </div>
     </section>

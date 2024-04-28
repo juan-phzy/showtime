@@ -1,5 +1,8 @@
 import { createClient } from "@/utils/supabase/server";
 import { MovieTheater, UserPreferences } from "@/utils/constants";
+import { FaEdit } from "react-icons/fa";
+import Link from "next/link";
+
 
 //vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  DO NOT MODIFY  vvvvvvvvvv
 const API_URL = process.env.MOVIEGULU_API_ENDPOINT;
@@ -69,7 +72,6 @@ export default async function ProfilePage() {
 
   const res = await getTheaterData(favoriteTheater);
 	const { data:theaterData }:{ data:MovieTheater } = await res.json();
-  console.log(theaterData.cinema_id, theaterData.cinema_name);
 
   return (
     <section className="profile-page-container">
@@ -77,13 +79,14 @@ export default async function ProfilePage() {
 
         <div className="profile-page-section">
 
-          <div className="profile-title">
-            User Information
+          <div className="profile-title justify-between">
+            <div className="w-fit h-full flex justify-center items-center">User Information</div>
+            <Link href={"/protected/complete-sign-up?step=1"} className="w-fit h-full flex justify-center items-center gap-2 text-base">Edit<FaEdit size={20}/></Link>
           </div>
           <div className="profile-section-content">
-            <div>{user_name}</div>
-            <div>{formattedPhoneNumber}</div>
-            <div>{user.email}</div>
+            <div>Username: {user_name}</div>
+            <div>Phone: {formattedPhoneNumber}</div>
+            <div>Email: {user.email}</div>
           </div>
 
         </div>
