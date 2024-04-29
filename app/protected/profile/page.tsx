@@ -76,6 +76,8 @@ export default async function ProfilePage() {
 
   return (
     <section className="profile-page-container">
+      <div className="absolute left-0 top-0 right-0 bottom-0 bg-black/90"></div>
+
       <div className="profile-page-content">
 
         <div className="profile-page-section">

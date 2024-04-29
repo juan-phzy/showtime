@@ -303,6 +303,8 @@
 @layer components {
   .home-page-container {
     @apply /* border-solid border-2 border-blue-400 */
+		bg-[url('/images/welcome-image.jpg')]
+		bg-cover bg-center
 		flex justify-center items-center
 		w-full h-full
 		p-4
@@ -380,6 +382,8 @@
   .movies-page-container {
     @apply /* border-dotted border-4 border-blue-400 */
 		flex justify-center items-center
+		bg-[url('/images/welcome-image.jpg')]
+		bg-cover bg-center
 		w-full h-full
 		relative
 		p-2;
@@ -439,6 +443,8 @@
   .profile-page-container {
     @apply /* border-solid border-4 border-blue-400 */
 		flex flex-col justify-center items-center
+		bg-[url('/images/welcome-image.jpg')]
+		bg-cover bg-center
 		w-full h-full
 		relative
 		p-5;
@@ -449,26 +455,27 @@
 		w-full h-full max-w-[1000px]
 		overflow-y-auto
 		relative
-		gap-4;
+		gap-8;
   }
   .profile-page-section {
     @apply /* border-solid border-4 border-purple-400 */
 		flex flex-col justify-center items-center
 		w-full h-fit
 		relative
-		gap-1;
+		gap-2;
   }
   .profile-title {
     @apply border-solid border-b-2 border-yellow-400
 		flex justify-start items-center
 		w-full h-fit
 		relative
-		text-2xl;
+		text-2xl
+		py-2;
   }
   .profile-section-content {
     @apply /* border-solid border-4 border-green-400 */
 		flex flex-col justify-center items-start
-		w-full h-fit
+		w-full h-fit font-light
 		relative
 		gap-1;
   }
@@ -504,6 +511,8 @@
     @apply 
 	/* border-solid border-4 border-blue-400 */
 		flex justify-center items-center
+		bg-[url('/images/welcome-image.jpg')]
+		bg-cover bg-center
 		w-full h-full
 		relative
 		p-2;
@@ -530,7 +539,7 @@
     @apply 
 	/* border-solid border-white border-4 */
 	flex flex-col justify-start items-center
-	overflow-y-auto
+	overflow-y-auto gap-12
 	w-full h-full
 	relative;
   }
@@ -551,7 +560,7 @@
 		w-[50px] h-[60px]
 		md:w-[80px] md:h-[80px]
 		lg:w-[120px] lg:h-[120px]
-		rounded-full;
+		rounded-lg;
   }
   .recs-title {
     @apply 

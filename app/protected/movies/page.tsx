@@ -58,6 +58,8 @@ export default async function MoviesPage({searchParams}: {readonly searchParams:
 	
 	return (
 		<section className="movies-page-container">
+      <div className="absolute left-0 top-0 right-0 bottom-0 bg-black/85"></div>
+
 			<MoviesPageList search={searchParams} moviesNowShowing={moviesNowShowing} moviesComingUp={moviesComingUp} />
 		</section>
 	);

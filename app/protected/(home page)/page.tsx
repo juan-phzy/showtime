@@ -95,6 +95,7 @@ const recommendedMovies = await getRecMovieGluFilms(recIds);
 
   return (
     <section className="home-page-container">
+    <div className="absolute left-0 top-0 right-0 bottom-0 bg-black/85"></div>
       <div className="home-page-content">
         <div className="home-page-header">
           <span className="hp-header-mobile">{`Welcome Back ${user_name}!`}</span>
