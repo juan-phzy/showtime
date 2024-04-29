@@ -91,7 +91,7 @@ export default async function RecommendationsPage() {
                   <div className="recs-image">
                     <Image
                       className="object-cover"
-                      src={movietimes[0].images.poster["1"].medium.film_image}
+                      src={movietimes[0].images.poster["1"]?.medium?.film_image ?? "/images/no-image.png"}
                       alt={movietimes[0].film_name}
                       fill
                     />

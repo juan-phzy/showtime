@@ -6,12 +6,13 @@ interface Props {
 }
 
 const MovieCard = ({movie}:Props) => {
+
   return (
     <div className="hp-mcu-movie">
                 <div className="movie-card-image flex justify-center items-center w-fit h-fit border-solid border-white border-2 relative">
                   <Image
                     className="object-contain"
-                    src={movie.images.poster["1"].medium.film_image}
+                    src={movie.images.poster["1"]?.medium?.film_image ?? "/images/no-image.png"}
                     alt={movie.film_name}
                     width={200}
                     height={300}

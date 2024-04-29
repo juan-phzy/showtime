@@ -86,7 +86,7 @@ export default async function Login({
         <SubmitButton
           disabled={searchParams.disabled === "true"}
           formAction={signUp}
-          className="border border-foreground/20 rounded-md px-4 py-2 text-foreground mb-2"
+          className="rounded-md px-4 py-2  mb-2 bg-red-400"
           pendingText="Signing Up..."
         >
           Sign Up
