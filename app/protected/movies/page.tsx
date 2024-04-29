@@ -11,19 +11,19 @@ const TERRITORY = process.env.MOVIEGULU_TERRITORY;
 const API_VERSION = process.env.MOVIEGULU_API_VERSION;
 const GEOLOC = process.env.MOVIEGULU_GEOLOCATION;
 async function getMoviesNowShowing() {
-  const res = await fetch(`${API_URL}/filmsNowShowing/?n=15`, {
-		method: "GET",
-    headers: {
-      "client":CLIENT ? CLIENT : "",
-      "x-api-key":API_KEY ? API_KEY : "",
-      "authorization":AUTH ? AUTH : "",
-      "territory":TERRITORY ? TERRITORY : "",
-      "api-version":API_VERSION ? API_VERSION : "",
-      "geolocation":GEOLOC ? GEOLOC : "",
-      "device-datetime": new Date().toISOString(),
-    },
-  });
-  const data = await res.json();
+      const res = await fetch(`${API_URL}/filmsNowShowing/?n=15`, {
+    		method: "GET",
+        headers: {
+          "client": CLIENT ?? "",
+          "x-api-key": API_KEY ?? "",
+          "authorization": AUTH ?? "",
+          "territory": TERRITORY ?? "",
+          "api-version": API_VERSION ?? "",
+          "geolocation": GEOLOC ?? "",
+          "device-datetime": new Date().toISOString(),
+        },
+      });
+      const data = await res.json();
   return Response.json({data});
 }
 async function getMoviesComingUp() {

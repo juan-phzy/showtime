@@ -33,7 +33,9 @@ export default async function Login({
   };
 
   return (
-    <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
+    <div className="flex justify-center items-center w-full h-full bg-[url('/images/welcome-image.jpg')] bg-cover bg-center relative z-0">
+      <div className="absolute top-0 left-0 right-0 bottom-0 bg-black/85 z-10"></div>
+      <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2  z-20">
       <Link
         href="/"
         className="absolute left-8 top-8 py-2 px-4 rounded-md no-underline text-foreground bg-btn-background hover:bg-btn-background-hover flex items-center group text-sm"
@@ -90,5 +92,6 @@ export default async function Login({
         )}
       </form>
     </div>
+  </div>
   );
 }

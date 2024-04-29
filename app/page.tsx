@@ -14,6 +14,7 @@ export default async function Index() {
 
   return (
     <section className="welcome-page-container">
+      <div className="absolute left-0 top-0 right-0 bottom-0 bg-black/80"></div>
       <div className="welcome-page-content">
         <div className="welcome-header-container">
           <Image
@@ -24,14 +25,14 @@ export default async function Index() {
           />
         </div>
         <div className="welcome-page-body">
-          <div className="welcome-image-container">
+          {/* <div className="welcome-image-container">
             <Image
               className="object-cover"
               src="/images/welcome-image.jpg"
               alt="Showtime"
               fill
             />
-          </div>
+          </div> */}
           <div className="welcome-text">Enjoy Your Favorite Movies</div>
         </div>
 
@@ -42,7 +43,7 @@ export default async function Index() {
             </Link>
           </div>
           <div className="welcome-btn">
-            <Link className="rounded-btn" href="/sign-up">
+            <Link className="rounded-btn bg-black border-solid border-[1px] border-red-400 text-red-400" href="/sign-up">
               Sign Up
             </Link>
           </div>

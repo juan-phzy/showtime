@@ -32,7 +32,7 @@ const HomeMovieList = ({ title, movies }: Props) => {
           <FaAngleRight className="text-amber-400" size={20} />
         </Link>
       </div>
-      <div className="hp-mcu-movies">
+      <div className="hp-mcu-movies scroll-x-only">
         {movies.length > 0 ? (
           movies.map((movie) => {
             return <MovieCard key={movie.film_id} movie={movie} />;
