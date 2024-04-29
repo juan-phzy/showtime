@@ -2,6 +2,7 @@ import { createClient } from "@/utils/supabase/server";
 import { MovieTheater, UserPreferences } from "@/utils/constants";
 import { FaEdit } from "react-icons/fa";
 import Link from "next/link";
+import AuthButton from "@/components/buttons/AuthButton";
 
 
 //vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  DO NOT MODIFY  vvvvvvvvvv
@@ -13,19 +14,19 @@ const TERRITORY = process.env.MOVIEGULU_TERRITORY;
 const API_VERSION = process.env.MOVIEGULU_API_VERSION;
 const GEOLOC = process.env.MOVIEGULU_GEOLOCATION;
 async function getTheaterData(theaterID: string) {
-  const res = await fetch(`${API_URL}/cinemaDetails/?cinema_id=${theaterID}`, {
-		method: "GET",
-    headers: {
-      "client":CLIENT ? CLIENT : "",
-      "x-api-key":API_KEY ? API_KEY : "",
-      "authorization":AUTH ? AUTH : "",
-      "territory":TERRITORY ? TERRITORY : "",
-      "api-version":API_VERSION ? API_VERSION : "",
-      "geolocation":GEOLOC ? GEOLOC : "",
-      "device-datetime": new Date().toISOString(),
-    },
-  });
-  const data = await res.json();
+      const res = await fetch(`${API_URL}/cinemaDetails/?cinema_id=${theaterID}`, {
+    		method: "GET",
+        headers: {
+          "client": CLIENT ?? "",
+          "x-api-key": API_KEY ?? "",
+          "authorization": AUTH ?? "",
+          "territory": TERRITORY ?? "",
+          "api-version": API_VERSION ?? "",
+          "geolocation": GEOLOC ?? "",
+          "device-datetime": new Date().toISOString(),
+        },
+      });
+      const data = await res.json();
   return Response.json({data});
 }
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  DO NOT MODIFY  ^^^^^^^^^^^^
@@ -84,9 +85,9 @@ export default async function ProfilePage() {
             <Link href={"/protected/complete-sign-up?step=1"} className="w-fit h-full flex justify-center items-center gap-2 text-base">Edit<FaEdit size={20}/></Link>
           </div>
           <div className="profile-section-content">
+            <AuthButton />
             <div>Username: {user_name}</div>
             <div>Phone: {formattedPhoneNumber}</div>
-            <div>Email: {user.email}</div>
           </div>
 
         </div>
