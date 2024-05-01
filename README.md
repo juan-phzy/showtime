@@ -26,6 +26,9 @@ up at their favorite cinema.
 * Showtime API------------- MovieGlu
 * Movie Data API----------- TMDB
 
+## Visual Demo:
+<!-- ![This is an alt text.](/public/images/LiveDemo.gif "Live Demo") -->
+
 ## Try our project for yourself! Instructions provided by our lead developer:
 
 To develop this project on your own you will need the following resources:
