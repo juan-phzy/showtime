@@ -52,4 +52,18 @@ To develop this project on your own you will need the following resources:
 5. Once you have all this set up, clone our project onto your text editor and run the following command:
     1. `npm i`
     2. This will install and update all depencies required to run the project
-    
+6. Create your own .local.env file at the root of your project and enter your personal keys with the following variable names:
+    1. NEXT_PUBLIC_SUPABASE_URL:"your-url-goes-here"
+    2. NEXT_PUBLIC_SUPABASE_ANON_KEY:"your-key-goes-here"
+    3. MOVIEGULU_API_ENDPOINT="your-endpoint-goes-here"
+    4. MOVIEGULU_CLIENT="your-client-goes-here"
+    5. MOVIEGULU_API_KEY="your-key-goes-here"
+    6. MOVIEGULU_AUTHORIZATION="your-auth-goes-here"
+    7. MOVIEGULU_TERRITORY="xx"
+    8. MOVIEGULU_API_VERSION="v200"
+    9. MOVIEGULU_GEOLOCATION="-22;14"
+    10. TMDB_ACCESS_TOKEN="your-token-here"
+    11. TMBD_API_KEY="your-key-here"
+    12. TMDB_AUTH="your-bearer-auth-here"
+7. Finally run:
+    1. `npm run dev` and navigate to your [localhost](localhost:3000) to see the project running
