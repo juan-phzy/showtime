@@ -486,13 +486,15 @@
 		relative
 		text-lg;
   }
-  .profile-list, .rec-list {
+  .profile-list,
+  .rec-list {
     @apply /* border-solid border-white border-2 */
 		flex justify-start items-center flex-wrap
 		w-full h-fit max-h-[100px]
 		gap-2;
   }
-  .profile-list-item, .rec-list-item {
+  .profile-list-item,
+  .rec-list-item {
     @apply border-solid border-2 border-red-400
 		flex justify-center items-center
 		w-fit h-fit
@@ -505,11 +507,105 @@
   }
 }
 
+/* Movie Details Page */
+
+@layer components {
+  .movie-details-container {
+    @apply 
+		/* border-solid border-4 border-blue-400 */
+			flex flex-col justify-start items-center
+			w-full h-full
+			relative;
+  }
+  .movie-details-content {
+    @apply 
+		/* border-solid border-4 border-orange-400 */
+			flex flex-col justify-start items-center
+			w-full max-w-[1000px] shrink-0
+			relative;
+  }
+  .md-image-container {
+    @apply 
+		/* border-solid border-4 border-purple-400 */
+			flex justify-center items-center
+			bg-blue-500/40
+			w-full h-[200px] md:h-[300px]
+			shrink-0
+			relative
+			gap-4;
+  }
+  .md-movie-card {
+    @apply flex flex-col justify-center items-center
+		w-[90%] h-[200px] 
+		bg-neutral-800/70
+		absolute bottom-[-100px] 
+		rounded-2xl 
+		p-4 z-30;
+		backdrop-filter: blur(10px);
+  }
+	.md-movie-title {
+		@apply 
+		/* border-solid border-white border-2 */
+		flex justify-start items-center
+		w-full h-fit
+		text-2xl
+		py-2;
+	}
+	.md-movie-time-date {
+		@apply 
+		/* border-solid border-yellow-600 border-2 */
+		flex justify-start items-center
+		w-full h-fit
+		text-xs
+		py-1;
+	}
+	.md-small-review {
+		@apply 
+		/* border-solid border-yellow-600 border-2 */
+		flex justify-start items-center
+		w-full h-fit
+		text-xs gap-1
+		py-1 mt-4;
+	}
+	.md-large-review {
+		@apply 
+		/* border-solid border-yellow-600 border-2 */
+		flex justify-between items-center
+		w-full h-fit
+		py-1;
+	}
+	.md-big-stars {
+		@apply 
+		/* border-solid border-yellow-600 border-2 */
+		flex justify-center items-center
+		w-fit h-fit
+	}
+	.md-trailer-btn {
+		@apply border-solid border-white border-2
+		flex justify-center items-center gap-1
+		rounded-lg
+		w-fit h-fit
+		text-xs
+		py-1 px-2
+	}
+
+  .md-body {
+    @apply 
+		/* border-solid border-4 border-yellow-400 */
+			flex flex-col justify-start items-center
+			w-full h-fit
+			relative
+			gap-2
+			px-4
+			pb-4
+			pt-[116px];
+  }
+}
+
 /* Recommendations Page */
 @layer components {
   .recs-page-container {
-    @apply 
-	/* border-solid border-4 border-blue-400 */
+    @apply /* border-solid border-4 border-blue-400 */
 		flex justify-center items-center
 		bg-[url('/images/welcome-image.jpg')]
 		bg-cover bg-center
@@ -518,16 +614,14 @@
 		p-2;
   }
   .recs-page-content {
-    @apply 
-	/* border-solid border-4 border-orange-400 */
+    @apply /* border-solid border-4 border-orange-400 */
 		flex flex-col justify-start items-center
 		w-full h-full max-w-[1000px]
 		relative
 		gap-4;
   }
   .recs-page-header {
-    @apply 
-		border-solid border-b-2 border-white
+    @apply border-solid border-b-2 border-white
 		flex justify-center items-center
 		w-full h-fit
 		relative
@@ -536,8 +630,7 @@
 		py-2;
   }
   .recs-page-body {
-    @apply 
-	/* border-solid border-white border-4 */
+    @apply /* border-solid border-white border-4 */
 	flex flex-col justify-start items-center
 	overflow-y-auto gap-12
 	w-full h-full
@@ -545,16 +638,14 @@
   }
 
   .recs-page-section {
-    @apply 
-	/* border-solid border-4 border-purple-400 */
+    @apply /* border-solid border-4 border-purple-400 */
 		flex flex-col justify-center items-center
 		w-full h-fit
 		relative
 		gap-2;
   }
   .recs-image {
-	@apply 
-		/* border-solid bor border-yellow-400 */
+    @apply /* border-solid bor border-yellow-400 */
 		flex justify-center items-center
 		relative overflow-hidden
 		w-[50px] h-[60px]
@@ -563,8 +654,7 @@
 		rounded-lg;
   }
   .recs-title {
-    @apply 
-	/* border-solid border-b-4 border-yellow-400 */
+    @apply /* border-solid border-b-4 border-yellow-400 */
 		flex justify-start items-center gap-4
 		w-full h-fit
 		shrink-0
@@ -579,9 +669,9 @@
 		text-xl
 		md:text-2xl lg:text-3xl
 		p-2;
-		white-space: nowrap;
-    	overflow: hidden;
-    	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .recs-section-content {

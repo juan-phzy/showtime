@@ -12,7 +12,7 @@ const MovieCard = ({movie}:Props) => {
                 <div className="movie-card-image flex justify-center items-center w-fit h-fit border-solid border-white border-2 relative">
                   <Image
                     className="object-contain"
-                    src={movie.images.poster["1"]?.medium?.film_image ?? "/images/no-image.png"}
+                    src={movie.images.poster ? (movie.images.poster["1"]?.medium?.film_image ?? "/images/no-image.png") : "/images/no-image.png"}
                     alt={movie.film_name}
                     width={200}
                     height={300}

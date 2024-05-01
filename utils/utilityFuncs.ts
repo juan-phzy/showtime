@@ -255,7 +255,7 @@ export function filterShowtimes(showtimes: ShowingTime[], period: string): Showi
 }
 
 
-async function getMovieGluDetail(filmID: string) {
+export async function getMovieGluDetail(filmID: string) {
   try {
     const res = await fetch(`${API_URL}/filmDetails/?film_id=${filmID}`, {
       method: "GET",

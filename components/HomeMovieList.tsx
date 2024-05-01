@@ -35,8 +35,11 @@ const HomeMovieList = ({ title, movies }: Props) => {
       <div className="hp-mcu-movies scroll-x-only">
         {movies.length > 0 ? (
           movies.map((movie) => {
-            return <MovieCard key={movie.film_id} movie={movie} />;
-          })
+            return (
+            <Link href={`/protected/movie-details/${movie.film_id}`} key={movie.film_id} className="movie-btn">
+              <MovieCard key={movie.film_id} movie={movie} />
+            </Link>
+          )})
         ) : (
           <div className="flex justify-center items-center w-full h-full p-5">
             <span>No movies found</span>

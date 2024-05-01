@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { MovieGluFilm } from "@/utils/constants";
 import MovieCard from "./MovieCard";
+import Link from "next/link";
 
 interface Props {
   moviesNowShowing: MovieGluFilm[];
@@ -36,9 +37,9 @@ export const MoviesPageList = ({ moviesNowShowing, moviesComingUp, search }: Pro
         {(nowPlaying ? moviesNowShowing : moviesComingUp).map(
           (movie: MovieGluFilm) => {
             return (
-              <button key={movie.film_id} className="movie-btn">
+              <Link href={`/protected/movie-details/${movie.film_id}`} key={movie.film_id} className="movie-btn">
                 <MovieCard movie={movie} />
-              </button>
+              </Link>
             );
           }
         )}
