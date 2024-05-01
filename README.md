@@ -66,4 +66,4 @@ To develop this project on your own you will need the following resources:
     11. TMBD_API_KEY="your-key-here"
     12. TMDB_AUTH="your-bearer-auth-here"
 7. Finally run:
-    1. `npm run dev` and navigate to your [localhost](localhost:3000) to see the project running
+    1. `npm run dev` and navigate to your localhost:3000 to see the project running
