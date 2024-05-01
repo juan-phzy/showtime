@@ -9,11 +9,11 @@ go to theaters. Additionally, users are given access to browse all movies now sh
 up at their favorite cinema.
 
 ## Team Members:
-* Juan Hernandez
-* Tanat Sahta
-* Emri Nesimi
-* Elijah Ewers
-* Cheuk Tung Ho
+* Juan Hernandez - Team Leader & Lead Developer
+* Tanat Sahta - Team Leader & Project Manager
+* Emri Nesimi - Web Design Specialist, Front End Developer
+* Elijah Ewers - Front End Developer, Project Analyst
+* Cheuk Tung Ho - Front End Developer, Project Tester
 
 ## Check out our live deployment:
 [Click here to view our application.](https://showtime-eight.vercel.app/)
@@ -25,3 +25,6 @@ up at their favorite cinema.
 * Database------------------ Supabase
 * Showtime API------------- MovieGlu
 * Movie Data API----------- TMDB
+
+## Try this project for yourself!
+
