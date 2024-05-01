@@ -27,7 +27,7 @@ up at their favorite cinema.
 * Movie Data API----------- TMDB
 
 ## Visual Demo:
-<!-- ![This is an alt text.](/public/images/LiveDemo.gif "Live Demo") -->
+![This is an alt text.](/public/images/LiveDemo.gif "Live Demo")
 
 ## Try our project for yourself! Instructions provided by our lead developer:
 
