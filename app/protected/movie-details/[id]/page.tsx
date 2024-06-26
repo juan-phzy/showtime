@@ -8,10 +8,9 @@ async function getTMDBData(id: string) {
       {
         method: "GET",
         headers: {
-          accept: "application/json",
-          Authorization:
-            process.env.TMDB_AUTH ?? "",
-        },
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYTMxYTBmMGNkZjhkNGJkNzA0YTUwZTdmNzYzMmMyZiIsIm5iZiI6MTcxOTQzODkxNC45MDUzODksInN1YiI6IjY2MTZlMTdhNGZkMTQxMDE4NWQwZjkxOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PZf63NYfWn1vnUxofwVvFO2IaceIowV-vJ-GubWUGQw'
+        }
       }
     );
     const data = await res.json();
@@ -39,7 +38,7 @@ export default async function MovieDetailsPage({
 
   return (
     <section className="movie-details-container scroll-y-only">
-      <MovieDetails data={data} tmdbData={tmdbData} key={process.env.TMDB_AUTH} />
+      <MovieDetails data={data} tmdbData={tmdbData} />
     </section>
   );
 }
