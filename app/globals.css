@@ -15,9 +15,9 @@
     position: relative;
     box-sizing: border-box;
     width: 100vw;
-    height: 100vh;
+    height: 100vh - env(safe-area-inset-bottom);
     min-width: 400px;
-    min-height: 400px;
+    min-height: 650px;
     background-color: rgb(15, 0, 0);
     color: white;
   }
