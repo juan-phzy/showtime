@@ -9,7 +9,7 @@ async function getTMDBData(id: string) {
         method: "GET",
         headers: {
           accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYTMxYTBmMGNkZjhkNGJkNzA0YTUwZTdmNzYzMmMyZiIsIm5iZiI6MTcxOTQzODkxNC45MDUzODksInN1YiI6IjY2MTZlMTdhNGZkMTQxMDE4NWQwZjkxOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PZf63NYfWn1vnUxofwVvFO2IaceIowV-vJ-GubWUGQw'
+          Authorization: process.env.TMDB_AUTH ?? '',
         }
       }
     );
