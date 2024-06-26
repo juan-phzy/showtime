@@ -26,10 +26,6 @@
 /* Root Layout & Protected Layout */
 @layer components {
 
-  .main-container {
-	padding-bottom: env(safe-area-inset-bottom, 20px);
-  }
-
   .main-container,
   .protected-main-container {
     @apply 
