@@ -9,8 +9,8 @@ const NavBar = () => {
   const pathname = usePathname();
   const isCompletingSignUp = pathname.includes("/protected/complete-sign-up");
 
-  console.log("pathname: ", pathname);
-  console.log("isCompletingSignUp: ", isCompletingSignUp);
+  //console.log("pathname: ", pathname);
+  //console.log("isCompletingSignUp: ", isCompletingSignUp);
 
   return (
     <div className={`navbar-container ${isCompletingSignUp && 'hidden'}`}>

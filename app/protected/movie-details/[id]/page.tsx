@@ -32,8 +32,8 @@ export default async function MovieDetailsPage({
 	let tmdbData = null;
 	if (data) {
 		tmdbData = await getTMDBData(data.imdb_title_id);
-    console.log("TMDB: ", tmdbData);
-    console.log(process.env.TMDB_AUTH);
+    //console.log("TMDB: ", tmdbData);
+    //console.log(process.env.TMDB_AUTH);
 	}
 
   return (

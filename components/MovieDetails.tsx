@@ -49,9 +49,9 @@ const MovieDetails = ({ data, tmdbData }: Props) => {
     return `${hrs}hr${mins}m`;
   }
 
-  console.log("Movie Glu: ", data);
+  //console.log("Movie Glu: ", data);
 
-  console.log("TMDB: ", tmdbData);
+  //console.log("TMDB: ", tmdbData);
 
   const rating = {
     stars: tmdbData ? (tmdbData.movie_results[0].vote_average / 10) * 5 : null,

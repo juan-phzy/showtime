@@ -48,11 +48,11 @@ export function filterPreferences(directors: [string, string[]][], chosenDirecto
 
 
 export async function createRecommendations(supabase: any, actors: [string, string[]][], directors: [string, string[]][], distributors: [string, string[]][], genres: string[], authId: string) {
-  console.log("\N\NCREATING recommendations\N");
-  console.log("Actors: ", actors);
-  console.log("Directors: ", directors);
-  console.log("Distributors: ", distributors);
-  console.log("Genres: ", genres);
+  // console.log("\N\NCREATING recommendations\N");
+  // console.log("Actors: ", actors);
+  // console.log("Directors: ", directors);
+  // console.log("Distributors: ", distributors);
+  // console.log("Genres: ", genres);
 
   // Create a map to store unique movies with their attributes
   const movies = new Map<string, { id: string, fromActor: boolean, fromDirector: boolean, fromDistributor: boolean }>();
@@ -88,9 +88,9 @@ export async function createRecommendations(supabase: any, actors: [string, stri
   // Convert the map to an array of movie objects
   const finalMovies = Array.from(movies.values());
 
-  console.log('\NFINAL MOVIES: ',finalMovies);
+  // console.log('\NFINAL MOVIES: ',finalMovies);
 
-  console.log("\nEnd of createRecommendations\n");
+  // console.log("\nEnd of createRecommendations\n");
 
   const jsonString = JSON.stringify(finalMovies);
 

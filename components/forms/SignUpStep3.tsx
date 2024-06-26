@@ -64,10 +64,10 @@ export default function SignUpStep3({preferenceData}: Readonly<Props>) {
     }
 
 
-    console.log("SA: ",selectedActors);
-    console.log("SD: ",selectedDirectors);
-    console.log("SDI: ",selectedDistributors);
-    console.log("SG: ",selectedGenres);
+    // console.log("SA: ",selectedActors);
+    // console.log("SD: ",selectedDirectors);
+    // console.log("SDI: ",selectedDistributors);
+    // console.log("SG: ",selectedGenres);
 
     const { data, error } = await supabase
     .from("preferences")

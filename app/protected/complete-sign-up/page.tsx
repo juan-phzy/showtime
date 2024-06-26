@@ -32,7 +32,7 @@ export default async function CompleteSignUpPage ({searchParams}: Readonly<{sear
     const supabase = createClient();
     const {data: { user }} = await supabase.auth.getUser();
     const userId = user?.id;
-    console.log("\n\nUser ID: ",userId,"\n\n");
+    //console.log("\n\nUser ID: ",userId,"\n\n");
     
     const { data, error } = await supabase
       .from('generalUsers')
@@ -45,8 +45,8 @@ export default async function CompleteSignUpPage ({searchParams}: Readonly<{sear
       return redirect(`/protected/complete-sign-up?step=1&error=true&message=${error.message}`);
     }
 
-    console.log("\n\nUser data inserted successfully\n\n");
-    console.log("Data:\n\n",data,"\n\n");
+    //console.log("\n\nUser data inserted successfully\n\n");
+    //console.log("Data:\n\n",data,"\n\n");
     return redirect("/protected/complete-sign-up?step=2");
   };
 
