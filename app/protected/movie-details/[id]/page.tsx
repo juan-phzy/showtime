@@ -9,7 +9,7 @@ async function getTMDBData(id: string) {
         method: "GET",
         headers: {
           accept: 'application/json',
-          Authorization: process.env.TMDB_AUTH ?? '',
+          Authorization: process.env.TMDB_AUTH ? `Bearer ${process.env.TMDB_AUTH}` : '',
         }
       }
     );
