@@ -15,12 +15,17 @@
     position: relative;
     box-sizing: border-box;
     width: 100vw;
-    height: 100vh - env(safe-area-inset-bottom);
+    height: fit-content;
     min-width: 400px;
     min-height: 650px;
     background-color: rgb(15, 0, 0);
     color: white;
   }
+
+  body {
+	@apply md:h-[100vh]
+  }
+
 }
 
 /* Root Layout & Protected Layout */
@@ -29,7 +34,7 @@
   .main-container,
   .protected-main-container {
     @apply 
-		border-dotted border-4 border-blue-400
+		/* border-dotted border-4 border-blue-400 */
 		flex flex-col justify-center items-center
 		w-full h-full
 		relative;
