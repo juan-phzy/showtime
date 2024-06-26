@@ -5,7 +5,10 @@
 /* ROOT CSS */
 @layer base {
   :root {
-    /* Empty */
+    --safe-area-inset-top: env(safe-area-inset-top);
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+    --safe-area-inset-left: env(safe-area-inset-left);
+    --safe-area-inset-right: env(safe-area-inset-right);
   }
 
   html,
@@ -20,6 +23,10 @@
     min-height: 650px;
     background-color: rgb(15, 0, 0);
     color: white;
+    padding-top: var(--safe-area-inset-top);
+    padding-bottom: var(--safe-area-inset-bottom);
+    padding-left: var(--safe-area-inset-left);
+    padding-right: var(--safe-area-inset-right);
   }
 }
 
@@ -28,10 +35,11 @@
   .main-container,
   .protected-main-container {
     @apply 
-		border-dotted border-4 border-blue-400
-		flex flex-col justify-center items-center
-		w-full h-full
-		relative;
+      border-dotted border-4 border-blue-400
+      flex flex-col justify-center items-center
+      w-full h-full
+      relative
+      pt-safe-top pb-safe-bottom pl-safe-left pr-safe-right;
   }
   .protected-main-container {
     @apply md:flex-col-reverse;
