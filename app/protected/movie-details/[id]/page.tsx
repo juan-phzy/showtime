@@ -39,7 +39,7 @@ export default async function MovieDetailsPage({
 
   return (
     <section className="movie-details-container scroll-y-only">
-      <MovieDetails data={data} tmdbData={tmdbData} />
+      <MovieDetails data={data} tmdbData={tmdbData} key={process.env.TMDB_AUTH} />
     </section>
   );
 }

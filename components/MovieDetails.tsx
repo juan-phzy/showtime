@@ -16,9 +16,10 @@ import { RxCross1 } from "react-icons/rx";
 interface Props {
   data: any;
   tmdbData: any;
+  key: any;
 }
 
-const MovieDetails = ({ data, tmdbData }: Props) => {
+const MovieDetails = ({ data, tmdbData, key }: Props) => {
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -52,6 +53,8 @@ const MovieDetails = ({ data, tmdbData }: Props) => {
   console.log("Movie Glu: ", data);
 
   console.log("TMDB: ", tmdbData);
+
+  console.log("TMDB Auth: ", key);
 
   const rating = {
     stars: tmdbData ? (tmdbData.movie_results[0].vote_average / 10) * 5 : null,
