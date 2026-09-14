@@ -2,6 +2,9 @@
 ### An academic project for Intro to Software Engineering at NYIT Spring '24
 
 ## Description:
+
+Notice: This project is no longer publicly deployed.
+
 This web application recommends movie showtimes to users depending on their favorite tastes.
 Users are shown actors, directors, and companies who have movies now playing in theaters. They
 are then able to choose their favorites as well as their preferred cinema and time of day to
